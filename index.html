@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Darepack — Packaging Machine Manufacturer, Pune</title>
+<meta name="description" content="Darepack manufactures VFFS machines, fillers, weighers and feeding systems in Pune. Trusted by 200+ industries across India."/>
+<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="css/navdrop.css"/>
+<style>
+#dp-fab{position:fixed;bottom:28px;right:28px;width:58px;height:58px;background:linear-gradient(135deg,#ff2a3b,#cc0010);border-radius:50%;border:none;cursor:pointer;z-index:99999;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(227,6,19,.45);transition:transform .2s;}
+#dp-fab:hover{transform:scale(1.1);}
+#dp-fab svg{width:26px;height:26px;fill:#fff;transition:transform .3s;}
+#dp-fab.open svg{transform:rotate(45deg);}
+#dp-box{position:fixed;bottom:98px;right:28px;width:370px;background:#fff;border-radius:12px;z-index:99998;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.18);border:1px solid rgba(227,6,19,.12);transform:scale(0.92) translateY(16px);transform-origin:bottom right;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;font-family:'Inter','Poppins',sans-serif;max-height:560px;}
+#dp-box.show{opacity:1;pointer-events:all;transform:scale(1) translateY(0);}
+.dp-head{background:linear-gradient(135deg,#ff2a3b,#cc0010);padding:16px 18px;display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.dp-head-ico{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.dp-head-info{flex:1;}
+.dp-head-name{font-size:14px;font-weight:700;color:#fff;}
+.dp-head-status{font-size:11px;color:rgba(255,255,255,.8);display:flex;align-items:center;gap:5px;margin-top:2px;}
+.dp-head-status::before{content:'';width:7px;height:7px;background:#4ade80;border-radius:50%;display:inline-block;}
+.dp-x{background:none;border:none;cursor:pointer;color:rgba(255,255,255,.7);font-size:22px;line-height:1;padding:0 4px;}
+.dp-x:hover{color:#fff;}
+.dp-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;min-height:0;scroll-behavior:smooth;}
+.dp-msgs::-webkit-scrollbar{width:3px;}
+.dp-msgs::-webkit-scrollbar-thumb{background:#ff2a3b;border-radius:2px;}
+.dp-row{display:flex;gap:8px;align-items:flex-end;max-width:100%;}
+.dp-row.dp-u{flex-direction:row-reverse;}
+.dp-av{width:28px;height:28px;border-radius:50%;flex-shrink:0;background:#fff0f0;border:1px solid rgba(227,6,19,.2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#cc0010;}
+.dp-bbl{padding:10px 14px;font-size:13.5px;line-height:1.6;max-width:80%;border-radius:18px;word-break:break-word;}
+.dp-row.dp-b .dp-bbl{background:#f4f5f7;color:#222;border-radius:4px 18px 18px 18px;}
+.dp-row.dp-u .dp-bbl{background:linear-gradient(135deg,#ff2a3b,#cc0010);color:#fff;border-radius:18px 4px 18px 18px;}
+.dp-time{font-size:10px;color:#aaa;margin-top:3px;text-align:right;}
+.dp-row.dp-b .dp-time{text-align:left;margin-left:36px;}
+.dp-typing{display:flex;gap:5px;align-items:center;padding:6px 2px;}
+.dp-typing span{width:7px;height:7px;background:#ccc;border-radius:50%;animation:dp-pulse 1.3s ease-in-out infinite;}
+.dp-typing span:nth-child(2){animation-delay:.18s;}
+.dp-typing span:nth-child(3){animation-delay:.36s;}
+@keyframes dp-pulse{0%,80%,100%{opacity:.25;transform:scale(.8);}40%{opacity:1;transform:scale(1);}}
+.dp-chips{padding:6px 16px 12px;display:flex;gap:7px;flex-wrap:wrap;flex-shrink:0;}
+.dp-chip{font-size:11.5px;padding:6px 13px;border-radius:20px;border:1.5px solid #e0e0e0;background:#fff;color:#555;cursor:pointer;transition:all .18s;white-space:nowrap;font-weight:500;}
+.dp-chip:hover{background:#fff0f0;border-color:#ff2a3b;color:#cc0010;}
+.dp-foot{padding:10px 12px;border-top:1px solid #eee;display:flex;gap:8px;align-items:flex-end;flex-shrink:0;}
+#dp-inp{flex:1;border:1.5px solid #e0e0e0;border-radius:8px;padding:9px 13px;font-size:13.5px;resize:none;outline:none;background:#fff;color:#333;min-height:38px;max-height:90px;line-height:1.45;transition:border-color .2s;}
+#dp-inp:focus{border-color:#ff2a3b;}
+#dp-inp::placeholder{color:#bbb;}
+#dp-go{width:38px;height:38px;border-radius:50%;flex-shrink:0;border:none;background:linear-gradient(135deg,#ff2a3b,#cc0010);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+#dp-go:hover{transform:scale(1.08);}
+#dp-go:disabled{background:#ddd;cursor:not-allowed;}
+#dp-go svg{width:16px;height:16px;fill:#fff;}
+#dp-go:disabled svg{fill:#aaa;}
+.dp-powered{text-align:center;font-size:10px;color:#bbb;padding:6px 0 8px;flex-shrink:0;}
+@media(max-width:430px){#dp-box{width:calc(100vw - 20px);right:10px;bottom:86px;}#dp-fab{right:14px;bottom:16px;}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="topbar-inner">
+  <a href="tel:9850079331">&#128222; +91 9850079331</a>
+  <a href="tel:8805029057">&#128222; +91 8805029057</a>
+  <a href="mailto:info@darepackpackaging.com">&#9993; info@darepackpackaging.com</a>
+  <a href="https://www.darepack.com" target="_blank">&#127760; www.darepack.com</a>
+</div></div>
+
+<nav class="nav" id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img class="js-logo" src="images/logo.png" alt="Darepack"/></a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <div class="nav-item">
+        <a href="products.html" class="nav-link">We Manufacture <span class="nav-arrow">&#9660;</span></a>
+        <div class="nav-dropdown">
+          <a href="products.html#vffs" class="nav-dd-item"><span class="nav-dd-icon">&#9881;</span><span class="nav-dd-label">VFFS Machines<span class="nav-dd-sub">GTS-300E / 300S / 400E / 400S</span></span></a>
+          <a href="products.html#fillers" class="nav-dd-item"><span class="nav-dd-icon">&#9878;</span><span class="nav-dd-label">Fillers &amp; Weighers<span class="nav-dd-sub">Auger, Cup, Net Scale, Belt</span></span></a>
+          <a href="products.html#feeding" class="nav-dd-item"><span class="nav-dd-icon">&#128260;</span><span class="nav-dd-label">Feeding Systems<span class="nav-dd-sub">Belt, Z-Type, Screw, Vibratory</span></span></a>
+          <a href="products.html#handling" class="nav-dd-item"><span class="nav-dd-icon">&#127981;</span><span class="nav-dd-label">Sec. Product Handling<span class="nav-dd-sub">Turn Table, Rotary, Takeaway</span></span></a>
+        </div>
+      </div>
+      <a href="industries.html" class="nav-link">Industries Served</a>
+              <a href="index.html#clients" class="nav-link">Our Clients</a>
+      <!-- <a href="#clients" class="nav-link">Our Clients</a> -->
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <div class="nav-right">
+      <a href="tel:9850079331" class="nav-phone">&#128222; +91 9850079331</a>
+      <a href="tel:9850079331" class="nav-icon" title="Call">&#128222;</a>
+      <a href="mailto:info@darepackpackaging.com" class="nav-icon" title="Email">&#9993;</a>
+      <button class="theme-toggle" id="theme-toggle" title="Toggle Dark Mode">🌙</button>
+<a href="contact.html" class="nav-cta">Get Quote</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="slide active">
+    <div class="slide-bg sbg1"></div><div class="slide-overlay"></div><div class="slide-grid"></div>
+    <div class="slide-machine"><img src="images/gts300s.png" alt="GTS-300S"/></div>
+    <div class="slide-content"><div class="slide-text">
+      <div class="slide-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-txt">Packaging Machine Manufacturer — Pune, India</span></div>
+      <h2>Innovative Packaging<br/>Solutions For<br/><em>Modern Brands</em></h2>
+      <p class="slide-sub">Darepack engineers high-performance VFFS machines, fillers, weighers and feeding systems — built in Pune, trusted by 200+ industries across India.</p>
+      <div class="slide-btns"><a href="about.html" class="btn-red">Who We Are &#8594;</a><a href="products.html" class="btn-ghost">Our Products</a></div>
+    </div></div>
+  </div>
+  <div class="slide">
+    <div class="slide-bg sbg2"></div><div class="slide-overlay"></div><div class="slide-grid"></div>
+    <div class="slide-machine"><img src="images/gts400s.png" alt="GTS-400S"/></div>
+    <div class="slide-content"><div class="slide-text">
+      <div class="slide-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-txt">VFFS Packaging Machines</span></div>
+      <h2>Enhanced<br/><em>Packaging Solutions</em><br/>At Every Scale</h2>
+      <p class="slide-sub">From GTS-300E to GTS-400S — 80 to 120 cycles/min with Schneider &amp; Siemens controls and custom engineering for your production line.</p>
+      <div class="slide-btns"><a href="products.html" class="btn-red">Packaging Solutions &#8594;</a><a href="contact.html" class="btn-ghost">Request Demo</a></div>
+    </div></div>
+  </div>
+  <div class="slide">
+    <div class="slide-bg sbg3"></div><div class="slide-overlay"></div><div class="slide-grid"></div>
+    <div class="slide-machine"><img src="images/stand-alon-scale.png" alt="Stand Alone Scale"/></div>
+    <div class="slide-content"><div class="slide-text">
+      <div class="slide-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-txt">Complete Packaging Lines</span></div>
+      <h2>Engineered For<br/>A World Of<br/><em>Applications</em></h2>
+      <p class="slide-sub">End-to-end packaging solutions: fillers, weighers, feeding systems and secondary handling — all custom-built for your product in Pune.</p>
+      <div class="slide-btns"><a href="industries.html" class="btn-red">Markets We Serve &#8594;</a><a href="contact.html" class="btn-ghost">Get a Quote</a></div>
+    </div></div>
+  </div>
+  <button class="s-arrow s-prev">&#8592;</button>
+  <button class="s-arrow s-next">&#8594;</button>
+  <div class="s-dots"><div class="sdot on"></div><div class="sdot"></div><div class="sdot"></div></div>
+</section>
+
+<div class="marquee"><div class="mq-track">
+  <span class="mq-item">GTS-300E VFFS Machine</span><span class="mq-item">GTS-300S VFFS Machine</span>
+  <span class="mq-item">GTS-400E VFFS Machine</span><span class="mq-item">GTS-400S VFFS Machine</span>
+  <span class="mq-item">Auger &amp; Cup Fillers</span><span class="mq-item">Net Scale &amp; Belt Weighers</span>
+  <span class="mq-item">Belt &amp; Z-Type Conveyors</span><span class="mq-item">Rotary &amp; Takeaway Tables</span>
+  <span class="mq-item">GTS-300E VFFS Machine</span><span class="mq-item">GTS-300S VFFS Machine</span>
+  <span class="mq-item">GTS-400E VFFS Machine</span><span class="mq-item">GTS-400S VFFS Machine</span>
+  <span class="mq-item">Auger &amp; Cup Fillers</span><span class="mq-item">Net Scale &amp; Belt Weighers</span>
+  <span class="mq-item">Belt &amp; Z-Type Conveyors</span><span class="mq-item">Rotary &amp; Takeaway Tables</span>
+</div></div>
+
+<section class="sec" id="about">
+  <div class="sec-wrap">
+    <div class="rv">
+      <div class="sec-label">Who We Are</div>
+      <h2 class="sec-h2">Bespoke Solutions As<br/>Unique as Your Products</h2>
+      <p class="sec-p">Darepack, a leading packaging machine manufacturer based in Pune, Maharashtra, champions the triad of Engineering, Quality, and Technology. With 15+ years of experience our machines have provided efficient solutions to businesses all over India.</p>
+    </div>
+    <div class="about-stats rv">
+      <div class="astat"><div class="astat-ico">&#9881;</div><div><div class="astat-num">500+</div><div class="astat-lbl">Machines installed across sectors</div></div></div>
+      <div class="astat"><div class="astat-ico">&#127981;</div><div><div class="astat-num">200+</div><div class="astat-lbl">Happy clients across India</div></div></div>
+      <div class="astat"><div class="astat-ico">&#128295;</div><div><div class="astat-num">15+</div><div class="astat-lbl">Years of engineering excellence</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec solutions-sec" id="solutions" style="padding-top:72px;padding-bottom:0">
+  <div class="sec-wrap">
+    <div class="rv" style="margin-bottom:36px">
+      <div class="sec-label">What We Make</div>
+      <h2 class="sec-h2">Packaging Solutions</h2>
+      <p class="sec-p">A complete range of high-performance packaging machinery, all built at our facility in Sanaswadi, Pune.</p>
+    </div>
+    <div class="sol-tabs rv">
+      <div class="sol-tab on" onclick="solTab(0,this)">VFFS — GTS-300E</div>
+      <div class="sol-tab" onclick="solTab(1,this)">VFFS — GTS-300S</div>
+      <div class="sol-tab" onclick="solTab(2,this)">VFFS — GTS-400E</div>
+      <div class="sol-tab" onclick="solTab(3,this)">VFFS — GTS-400S</div>
+      <div class="sol-tab" onclick="solTab(4,this)">Fillers &amp; Weighers</div>
+      <div class="sol-tab" onclick="solTab(5,this)">Feeding Systems</div>
+      <div class="sol-tab" onclick="solTab(6,this)">Sec. Handling</div>
+    </div>
+  </div>
+  <div class="sol-panel on">
+    <div class="sol-img"><img src="images/gts300s.png" alt="GTS-300E"/></div>
+    <div class="sol-body"><div class="sol-cat">VFFS Machine</div><div class="sol-name">GTS-300E</div><p class="sol-desc">High-efficiency VFFS machine for medium-speed packaging. Schneider/Siemens controls deliver consistent performance for powders, granules and laminated films.</p><div class="sol-specs"><div class="sspec"><div class="sspec-k">Reel Width</div><div class="sspec-v">630mm Max</div></div><div class="sspec"><div class="sspec-k">Speed</div><div class="sspec-v">80 cycles/min</div></div><div class="sspec"><div class="sspec-k">Reel Dia.</div><div class="sspec-v">450mm Max</div></div><div class="sspec"><div class="sspec-k">Core Dia.</div><div class="sspec-v">76mm</div></div><div class="sspec"><div class="sspec-k">Max Reel Wt</div><div class="sspec-v">85 kg</div></div><div class="sspec"><div class="sspec-k">Film Type</div><div class="sspec-v">LLDPE / LDPE / Laminated</div></div></div><a href="contact.html" class="sol-cta">Enquire Now &#8594;</a></div>
+  </div>
+  <div class="sol-panel">
+    <div class="sol-img"><img src="images/gts300s.png" alt="GTS-300S"/></div>
+    <div class="sol-body"><div class="sol-cat">VFFS Machine</div><div class="sol-name">GTS-300S</div><p class="sol-desc">High-speed variant at 120 cycles/min for high-volume lines. Servo film pull, precision jaw sealing and full PLC integration for minimal downtime.</p><div class="sol-specs"><div class="sspec"><div class="sspec-k">Reel Width</div><div class="sspec-v">630mm Max</div></div><div class="sspec"><div class="sspec-k">Speed</div><div class="sspec-v">120 cycles/min</div></div><div class="sspec"><div class="sspec-k">Reel Dia.</div><div class="sspec-v">450mm Max</div></div><div class="sspec"><div class="sspec-k">Core Dia.</div><div class="sspec-v">76mm</div></div><div class="sspec"><div class="sspec-k">Max Reel Wt</div><div class="sspec-v">85 kg</div></div><div class="sspec"><div class="sspec-k">Film Type</div><div class="sspec-v">LLDPE / LDPE / Laminated</div></div></div><a href="contact.html" class="sol-cta">Enquire Now &#8594;</a></div>
+  </div>
+  <div class="sol-panel">
+    <div class="sol-img"><img src="images/gts400s.png" alt="GTS-400E"/></div>
+    <div class="sol-body"><div class="sol-cat">VFFS Machine</div><div class="sol-name">GTS-400E</div><p class="sol-desc">Wide-format 830mm reel handling ideal for larger bag sizes. Robust frame, easy-access panels, engineered for demanding industrial environments.</p><div class="sol-specs"><div class="sspec"><div class="sspec-k">Reel Width</div><div class="sspec-v">830mm Max</div></div><div class="sspec"><div class="sspec-k">Speed</div><div class="sspec-v">80 cycles/min</div></div><div class="sspec"><div class="sspec-k">Reel Dia.</div><div class="sspec-v">500mm Max</div></div><div class="sspec"><div class="sspec-k">Core Dia.</div><div class="sspec-v">76mm</div></div><div class="sspec"><div class="sspec-k">Max Reel Wt</div><div class="sspec-v">85 kg</div></div><div class="sspec"><div class="sspec-k">Film Type</div><div class="sspec-v">LLDPE / LDPE / Laminated</div></div></div><a href="contact.html" class="sol-cta">Enquire Now &#8594;</a></div>
+  </div>
+  <div class="sol-panel">
+    <div class="sol-img"><img src="images/gts400s.png" alt="GTS-400S"/></div>
+    <div class="sol-body"><div class="sol-cat">VFFS Machine</div><div class="sol-name">GTS-400S</div><p class="sol-desc">830mm wide-format at 100 cycles/min. Perfect for high-volume wide-bag production in spices, grains, pulses and snacks.</p><div class="sol-specs"><div class="sspec"><div class="sspec-k">Reel Width</div><div class="sspec-v">830mm Max</div></div><div class="sspec"><div class="sspec-k">Speed</div><div class="sspec-v">100 cycles/min</div></div><div class="sspec"><div class="sspec-k">Reel Dia.</div><div class="sspec-v">500mm Max</div></div><div class="sspec"><div class="sspec-k">Core Dia.</div><div class="sspec-v">76mm</div></div><div class="sspec"><div class="sspec-k">Max Reel Wt</div><div class="sspec-v">85 kg</div></div><div class="sspec"><div class="sspec-k">Film Type</div><div class="sspec-v">LLDPE / LDPE / Laminated</div></div></div><a href="contact.html" class="sol-cta">Enquire Now &#8594;</a></div>
+  </div>
+  <div class="sol-panel">
+    <div class="sol-img"><img src="images/auger-filler.png" alt="Fillers"/></div>
+    <div class="sol-body"><div class="sol-cat">Filling Systems</div><div class="sol-name">Fillers &amp; Weighers</div><p class="sol-desc">Auger fillers, cup fillers, multi head weighers, linear weighers, belt weighers and net scale systems — each tailored to your product for precise, efficient filling.</p><div class="sol-specs"><div class="sspec"><div class="sspec-k">Types</div><div class="sspec-v">Auger, Cup, Multi Head</div></div><div class="sspec"><div class="sspec-k">Also</div><div class="sspec-v">Linear, Belt, Net Scale</div></div><div class="sspec"><div class="sspec-k">Material</div><div class="sspec-v">SS 304 Stainless Steel</div></div><div class="sspec"><div class="sspec-k">Controls</div><div class="sspec-v">Schneider / Siemens</div></div></div><a href="contact.html" class="sol-cta">Enquire Now &#8594;</a></div>
+  </div>
+  <div class="sol-panel">
+    <div class="sol-img"><img src="images/feeding_ztype_conveyor.png" alt="Feeding"/></div>
+    <div class="sol-body"><div class="sol-cat">Feeding Systems</div><div class="sol-name">Feeding Systems</div><p class="sol-desc">Belt, Z-type, screw conveyors and vibratory tray feeders — all SS 304 with VFD-controlled motors for adjustable speed and smooth product transfer.</p><div class="sol-specs"><div class="sspec"><div class="sspec-k">Types</div><div class="sspec-v">Belt, Z-Type, Screw</div></div><div class="sspec"><div class="sspec-k">Also</div><div class="sspec-v">Vibratory Tray Feeder</div></div><div class="sspec"><div class="sspec-k">Material</div><div class="sspec-v">SS 304 / MS</div></div><div class="sspec"><div class="sspec-k">Drive</div><div class="sspec-v">Motor / VFD</div></div></div><a href="contact.html" class="sol-cta">Enquire Now &#8594;</a></div>
+  </div>
+  <div class="sol-panel">
+    <div class="sol-img"><img src="images/turn-rotary-table1.jpg" alt="Handling"/></div>
+    <div class="sol-body"><div class="sol-cat">Secondary Handling</div><div class="sol-name">Sec. Product Handling</div><p class="sol-desc">Turn tables, rotary tables and takeaway conveyors — designed to integrate seamlessly with your primary packaging line for smooth, continuous operation.</p><div class="sol-specs"><div class="sspec"><div class="sspec-k">Types</div><div class="sspec-v">Turn &amp; Rotary Table</div></div><div class="sspec"><div class="sspec-k">Also</div><div class="sspec-v">Takeaway Conveyor</div></div><div class="sspec"><div class="sspec-k">Build</div><div class="sspec-v">SS 304 Stainless Steel</div></div><div class="sspec"><div class="sspec-k">Drive</div><div class="sspec-v">Motor Driven</div></div></div><a href="contact.html" class="sol-cta">Enquire Now &#8594;</a></div>
+  </div>
+</section>
+
+<section class="sec" id="industries">
+  <div class="sec-wrap">
+    <div class="rv" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px">
+      <div><div class="sec-label">Markets We Serve</div><h2 class="sec-h2">Industries We Serve</h2><p class="sec-p">We recognise the crucial role of packaging in creating a strong first impression and maintaining your brand's credibility across every sector.</p></div>
+      <a href="industries.html" class="btn-red" style="flex-shrink:0">All Industries &#8594;</a>
+    </div>
+    <div class="ind-grid rv">
+      <div class="ind-card"><div class="ind-icon">&#127806;</div><div class="ind-name">Snacks &amp; Namkeen</div></div>
+      <div class="ind-card"><div class="ind-icon">&#129346;</div><div class="ind-name">Spices &amp; Condiments</div></div>
+      <div class="ind-card"><div class="ind-icon">&#127807;</div><div class="ind-name">Agrochemicals</div></div>
+      <div class="ind-card"><div class="ind-icon">&#128062;</div><div class="ind-name">Animal Food</div></div>
+      <div class="ind-card"><div class="ind-icon">&#129380;</div><div class="ind-name">Beverages</div></div>
+      <div class="ind-card"><div class="ind-icon">&#129379;</div><div class="ind-name">Breakfast Cereals</div></div>
+      <div class="ind-card"><div class="ind-icon">&#127852;</div><div class="ind-name">Confectionery</div></div>
+      <div class="ind-card"><div class="ind-icon">&#129371;</div><div class="ind-name">Dairy</div></div>
+      <div class="ind-card"><div class="ind-icon">&#127806;</div><div class="ind-name">Flour &amp; Grains</div></div>
+      <div class="ind-card"><div class="ind-icon">&#10052;</div><div class="ind-name">Frozen Food</div></div>
+      <div class="ind-card"><div class="ind-icon">&#128138;</div><div class="ind-name">Pharma</div></div>
+      <div class="ind-card"><div class="ind-icon">&#127981;</div><div class="ind-name">Industrial Products</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ OUR CLIENTS SECTION ═══════════════ -->
+<section class="sec clients-sec" id="clients">
+  <div class="sec-wrap">
+    <div class="rv" style="text-align:center">
+      <div class="clients-eyebrow">
+        <div class="eyebrow-line" style="background:var(--red)"></div>
+        <div class="sec-label" style="margin:0">Trusted By The Best</div>
+        <div class="eyebrow-line" style="background:var(--red)"></div>
+      </div>
+      <h2 class="sec-h2" style="text-align:center;margin-top:14px">Brands That Trust<br/><em style="font-style:normal;color:var(--red)">Darepack Machines</em></h2>
+      <p class="sec-p" style="text-align:center;margin:14px auto 0">From global FMCG giants to India's most loved dairy and food brands — our machines run at the heart of their production lines.</p>
+    </div>
+  </div>
+  <div class="clients-marquee-wrap rv" style="margin-top:52px">
+    <div class="clients-track clients-track-fwd">
+      <div class="client-logo-card"><img src="images/clients/aneja.png" alt="Aneja"/></div>
+      <div class="client-logo-card"><img src="images/clients/banas.png" alt="Banas Dairy"/></div>
+      <div class="client-logo-card"><img src="images/clients/bhole.png" alt="Bhole Baba"/></div>
+      <div class="client-logo-card"><img src="images/clients/kerry.png" alt="Kerry"/></div>
+      <div class="client-logo-card"><img src="images/clients/khetia.png" alt="Khetia Drapers"/></div>
+      <div class="client-logo-card"><img src="images/clients/marico.png" alt="Marico"/></div>
+      <div class="client-logo-card"><img src="images/clients/mondelez.png" alt="Mondelez"/></div>
+      <div class="client-logo-card"><img src="images/clients/aneja.png" alt="Aneja"/></div>
+      <div class="client-logo-card"><img src="images/clients/banas.png" alt="Banas Dairy"/></div>
+      <div class="client-logo-card"><img src="images/clients/bhole.png" alt="Bhole Baba"/></div>
+      <div class="client-logo-card"><img src="images/clients/kerry.png" alt="Kerry"/></div>
+      <div class="client-logo-card"><img src="images/clients/khetia.png" alt="Khetia Drapers"/></div>
+      <div class="client-logo-card"><img src="images/clients/marico.png" alt="Marico"/></div>
+      <div class="client-logo-card"><img src="images/clients/mondelez.png" alt="Mondelez"/></div>
+    </div>
+  </div>
+  <div class="clients-marquee-wrap rv" style="margin-top:18px">
+    <div class="clients-track clients-track-rev">
+      <div class="client-logo-card"><img src="images/clients/parag.png" alt="Parag"/></div>
+      <div class="client-logo-card"><img src="images/clients/pyrotek.png" alt="Pyrotek"/></div>
+      <div class="client-logo-card"><img src="images/clients/unilever.png" alt="Unilever"/></div>
+      <div class="client-logo-card"><img src="images/clients/barmalt.png" alt="Barmalt"/></div>
+      <div class="client-logo-card"><img src="images/clients/motherdairy.png" alt="Mother Dairy"/></div>
+      <div class="client-logo-card"><img src="images/clients/adama.png" alt="Adama"/></div>
+      <div class="client-logo-card"><img src="images/clients/parag.png" alt="Parag"/></div>
+      <div class="client-logo-card"><img src="images/clients/pyrotek.png" alt="Pyrotek"/></div>
+      <div class="client-logo-card"><img src="images/clients/unilever.png" alt="Unilever"/></div>
+      <div class="client-logo-card"><img src="images/clients/barmalt.png" alt="Barmalt"/></div>
+      <div class="client-logo-card"><img src="images/clients/motherdairy.png" alt="Mother Dairy"/></div>
+      <div class="client-logo-card"><img src="images/clients/adama.png" alt="Adama"/></div>
+    </div>
+  </div>
+  <div class="clients-trust rv">
+    <div class="sec-wrap">
+      <div class="clients-trust-inner">
+        <div class="ctrust-item"><span class="ctrust-num">13+</span><span class="ctrust-lbl">Marquee Brands</span></div>
+        <div class="ctrust-div"></div>
+        <div class="ctrust-item"><span class="ctrust-num">200+</span><span class="ctrust-lbl">Happy Clients Across India</span></div>
+        <div class="ctrust-div"></div>
+        <div class="ctrust-item"><span class="ctrust-num">500+</span><span class="ctrust-lbl">Machines In The Field</span></div>
+        <div class="ctrust-div"></div>
+        <div class="ctrust-item"><span class="ctrust-num">12+</span><span class="ctrust-lbl">Industries Served</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="clients-quotes rv">
+    <div class="sec-wrap">
+      <div class="clients-quotes-grid">
+        <div class="cquote-card">
+          <div class="cquote-mark">&#8220;</div>
+          <p class="cquote-text">Darepack's GTS-400S handles our entire spice pouch line flawlessly. The after-sales support is genuinely best-in-class — fast response, knowledgeable team.</p>
+          <div class="cquote-author">
+            <div class="cquote-av">RS</div>
+            <div><div class="cquote-name">R. Sharma</div><div class="cquote-co">Plant Head, Spices Division</div></div>
+          </div>
+        </div>
+        <div class="cquote-card">
+          <div class="cquote-mark">&#8220;</div>
+          <p class="cquote-text">We've installed 6 VFFS units across two plants. Uptime is exceptional and the engineering team understands our product and process needs deeply.</p>
+          <div class="cquote-author">
+            <div class="cquote-av">PK</div>
+            <div><div class="cquote-name">P. Kulkarni</div><div class="cquote-co">Production Manager, Dairy Sector</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec why-sec" id="why">
+  <div class="sec-wrap" style="position:relative;z-index:1">
+    <div class="rv"><div class="sec-label">Why Choose Darepack</div><h2 class="sec-h2 wh">Built for Your Success</h2><p class="sec-p wh">We don't just manufacture machines — we engineer solutions that grow with your business, from first consultation to lifetime after-sales support.</p></div>
+    <div class="why-grid rv">
+      <div class="wcard"><div class="wcard-num">01</div><div class="wcard-ico">&#9881;</div><div class="wcard-title">German-Grade Quality</div><p class="wcard-desc">Precision-engineered components with world-class tolerances built to perform year after year without compromise.</p></div>
+      <div class="wcard"><div class="wcard-num">02</div><div class="wcard-ico">&#128295;</div><div class="wcard-title">AMC &amp; Service</div><p class="wcard-desc">Comprehensive annual maintenance contracts with on-site support and rapid spare parts availability across India.</p></div>
+      <div class="wcard"><div class="wcard-num">03</div><div class="wcard-ico">&#128208;</div><div class="wcard-title">Custom Engineering</div><p class="wcard-desc">Every machine designed around your specific product, speed, space and output — nothing off-the-shelf, everything bespoke.</p></div>
+      <div class="wcard"><div class="wcard-num">04</div><div class="wcard-ico">&#128222;</div><div class="wcard-title">24/7 Support</div><p class="wcard-desc">Dedicated helpline, remote diagnostics and fast field engineer response to minimise your production downtime.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec process-sec" id="process">
+  <div class="sec-wrap">
+    <div class="rv" style="text-align:center"><div class="sec-label" style="justify-content:center;display:flex">How We Work</div><h2 class="sec-h2" style="text-align:center">Our 5-Step Process</h2><p class="sec-p" style="text-align:center;margin:12px auto">A proven process delivering precision packaging machines on time, every time.</p></div>
+    <div class="proc-grid rv">
+      <div class="pstep"><div class="pstep-num">01</div><div class="pstep-title">Consultation</div><p class="pstep-desc">Understand your product &amp; packaging requirements</p></div>
+      <div class="pstep"><div class="pstep-num">02</div><div class="pstep-title">Design</div><p class="pstep-desc">CAD-based engineering and layout planning</p></div>
+      <div class="pstep"><div class="pstep-num">03</div><div class="pstep-title">Manufacture</div><p class="pstep-desc">Built at our Pune facility with ISO-grade QC</p></div>
+      <div class="pstep"><div class="pstep-num">04</div><div class="pstep-title">Testing</div><p class="pstep-desc">FAT testing with your actual product before dispatch</p></div>
+      <div class="pstep"><div class="pstep-num">05</div><div class="pstep-title">Installation</div><p class="pstep-desc">On-site commissioning &amp; full operator training</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="cta-inner rv">
+    <h2>Ready to Upgrade Your Packaging Line?</h2>
+    <p>Talk to our engineers today — free consultation and tailored quote for your next packaging project.</p>
+    <a href="contact.html" class="btn-white">Contact Us Now &#8594;</a>
+  </div>
+</section>
+
+<footer>
+  <div class="sec-wrap">
+    <div class="foot-grid">
+      <div><div class="foot-logo"><img class="js-foot-logo" src="images/logo.png" alt="Darepack"/></div><p class="foot-desc">Designing and manufacturing high-performance packaging machinery from Pune, Maharashtra. Trusted by 200+ businesses across India.</p></div>
+      <div class="foot-col col-products"><h5>We Manufacture</h5><ul><li><a href="products.html">GTS-300E VFFS</a></li><li><a href="products.html">GTS-300S VFFS</a></li><li><a href="products.html">GTS-400E VFFS</a></li><li><a href="products.html">GTS-400S VFFS</a></li><li><a href="products.html">Fillers &amp; Weighers</a></li><li><a href="products.html">Feeding Systems</a></li><li><a href="products.html">Sec. Handling</a></li></ul></div>
+      <div class="foot-col col-company"><h5>Company</h5><ul><li><a href="about.html">About Us</a></li><li><a href="index.html#why">Why Darepack</a></li><li><a href="index.html#process">Our Process</a></li><li><a href="industries.html">Industries</a></li><li><a href="#clients">Our Clients</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="https://www.darepack.com" target="_blank">www.darepack.com</a></li></ul></div>
+      <div class="foot-col col-contact"><h5>Contact Us</h5><ul><li><a href="tel:9850079331">&#128222; 9850079331</a></li><li><a href="tel:8805029057">&#128222; 8805029057</a></li><li><a href="https://wa.me/919850079331" target="_blank">&#128172; WhatsApp</a></li><li><a href="mailto:info@darepackpackaging.com">&#9993; Email Us</a></li><li><a href="contact.html">&#128205; Sanaswadi, Pune 412208</a></li><li><a href="contact.html">&#128336; Mon-Sat 10:00-18:00</a></li></ul></div>
+    </div>
+    <div class="foot-bottom"><p>&#169; 2026 Darepack. All rights reserved. | <a href="https://www.darepack.com" target="_blank">www.darepack.com</a></p><p>Nareshwar Temple Road, Gat No. 933, Sanaswadi, Pune - 412208, Maharashtra, India</p></div>
+  </div>
+</footer>
+
+<button id="dp-fab" aria-label="Open chat"><svg viewBox="0 0 24 24"><path d="M20 2H4a2 2 0 00-2 2v18l4-4h14a2 2 0 002-2V4a2 2 0 00-2-2zm-2 10H6V10h12v2zm0-3H6V7h12v2z"/></svg></button>
+<div id="dp-box" role="dialog">
+  <div class="dp-head"><div class="dp-head-ico">&#129302;</div><div class="dp-head-info"><div class="dp-head-name">Darepack Assistant</div><div class="dp-head-status">Online - Ask me anything</div></div><button class="dp-x" id="dp-x">&#10005;</button></div>
+  <div class="dp-msgs" id="dp-msgs"></div>
+  <div class="dp-chips" id="dp-chips">
+    <button class="dp-chip" data-q="What machines do you make?">Our machines</button>
+    <button class="dp-chip" data-q="GTS-300E specs">GTS-300E specs</button>
+    <button class="dp-chip" data-q="How do I get a price quote?">Get a quote</button>
+    <button class="dp-chip" data-q="Which industries do you serve?">Industries</button>
+    <button class="dp-chip" data-q="Where is Darepack located?">Location</button>
+  </div>
+  <div class="dp-foot"><textarea id="dp-inp" rows="1" placeholder="Ask about machines, pricing, specs..."></textarea><button id="dp-go"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button></div>
+  <div class="dp-powered">Powered by Darepack AI</div>
+</div>
+
+<script src="js/images.js"></script>
+<script src="js/main.js"></script>
+<script src="js/darkmode.js"></script>
+<!-- <script src="js/darkmode.js"></script> -->
+<script>
+function solTab(n,el){document.querySelectorAll('.sol-tab').forEach(function(t){t.classList.remove('on');});document.querySelectorAll('.sol-panel').forEach(function(p){p.classList.remove('on');});el.classList.add('on');document.querySelectorAll('.sol-panel')[n].classList.add('on');}
+window.addEventListener('scroll',function(){document.getElementById('main-nav').classList.toggle('shadow',window.scrollY>8);});
+(function(){
+  var FAQ=[
+    {keys:['hello','hi','hey','namaste'],ans:'Hello! Welcome to Darepack.\n\nI can help with machine specs, pricing, industries and contact details.\n\nWhat can I help you with today?'},
+    {keys:['machines','products','what do you make','range','vffs'],ans:'Darepack manufactures:\n\n1. GTS-300E VFFS - 80 cycles/min\n2. GTS-300S VFFS - 120 cycles/min\n3. GTS-400E VFFS - 80 cycles/min wide\n4. GTS-400S VFFS - 100 cycles/min wide\n5. Auger, Cup and Net Scale Fillers\n6. Belt, Z-Type and Screw Conveyors\n7. Vibratory Feeders\n8. Turn and Rotary Tables'},
+    {keys:['gts300e','gts-300e','300e'],ans:'GTS-300E:\n80 cycles/min\nReel: 630mm Max\nDia: 450mm | Wt: 85kg\nLLDPE / LDPE / Laminated\n\nCall: +91 9850079331'},
+    {keys:['gts300s','gts-300s','300s'],ans:'GTS-300S (High Speed):\n120 cycles/min\nReel: 630mm Max\nServo film pull + precision sealing\n\nCall: +91 9850079331'},
+    {keys:['gts400e','gts-400e','400e'],ans:'GTS-400E (Wide Format):\n80 cycles/min\nReel: 830mm Max\nDia: 500mm\n\nCall: +91 9850079331'},
+    {keys:['gts400s','gts-400s','400s'],ans:'GTS-400S (Wide + Fast):\n100 cycles/min\nReel: 830mm Max\nDia: 500mm\n\nCall: +91 9850079331'},
+    {keys:['price','cost','quote','rate','how much'],ans:'Pricing depends on model and customisation.\n\nCall: +91 9850079331\nCall: +91 8805029057\nEmail: info@darepackpackaging.com\n\nWe respond within 24 hours!'},
+    {keys:['location','address','where','pune','sanaswadi'],ans:'Nareshwar Temple Road, Gat No. 933\nSanaswadi, Pune - 412208\n\nMon-Sat 10:00 AM - 6:00 PM'},
+    {keys:['contact','phone','call','whatsapp'],ans:'+91 9850079331\n+91 8805029057\nWhatsApp: +91 9850079331\ninfo@darepackpackaging.com'},
+    {keys:['industry','industries','food','snacks','spices','pharma','dairy'],ans:'Darepack serves 12+ industries:\nSnacks | Spices | Agro | Animal Food\nBeverages | Cereals | Confectionery\nDairy | Flour | Frozen | Pharma | Industrial'},
+    {keys:['clients','customers','brands'],ans:'Darepack is trusted by 13+ marquee brands including:\nMondelēz, Unilever, Marico, Kerry\nBanas Dairy, Mother Dairy, Parag\nPyrotek, Adama, Barmalt, Khetia and more!'},
+    {keys:['amc','service','support','maintenance'],ans:'After-sales support:\nAnnual Maintenance Contracts (AMC)\nOn-site support across India\nRapid spare parts\n24/7 helpline: +91 9850079331'},
+    {keys:['thank','thanks','great','awesome'],ans:'You are most welcome!\n\nCall: +91 9850079331'},
+  ];
+  var DEFAULT='Our team can help!\n\n+91 9850079331\ninfo@darepackpackaging.com';
+  function findAns(q){var l=q.toLowerCase(),best=null,score=0;FAQ.forEach(function(f){var s=0;f.keys.forEach(function(k){if(l.indexOf(k)!==-1)s+=k.length;});if(s>score){score=s;best=f;}});return score>0?best.ans:DEFAULT;}
+  var busy=false,opened=false;
+  var fab=document.getElementById('dp-fab'),box=document.getElementById('dp-box'),xBtn=document.getElementById('dp-x');
+  var msgs=document.getElementById('dp-msgs'),chips=document.getElementById('dp-chips');
+  var inp=document.getElementById('dp-inp'),go=document.getElementById('dp-go');
+  function tn(){return new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});}
+  function addMsg(role,text){var row=document.createElement('div');row.className='dp-row '+(role==='user'?'dp-u':'dp-b');var safe=text.replace(/\n/g,'<br>');row.innerHTML=role==='bot'?'<div class="dp-av">D</div><div><div class="dp-bbl">'+safe+'</div><div class="dp-time">'+tn()+'</div></div>':'<div><div class="dp-bbl">'+safe+'</div><div class="dp-time">'+tn()+'</div></div>';msgs.appendChild(row);msgs.scrollTop=msgs.scrollHeight;}
+  function showTyping(){var r=document.createElement('div');r.className='dp-row dp-b';r.id='dp-typing';r.innerHTML='<div class="dp-av">D</div><div class="dp-bbl"><div class="dp-typing"><span></span><span></span><span></span></div></div>';msgs.appendChild(r);msgs.scrollTop=msgs.scrollHeight;}
+  function hideTyping(){var t=document.getElementById('dp-typing');if(t)t.remove();}
+  fab.addEventListener('click',function(){var o=box.classList.contains('show');if(o){box.classList.remove('show');fab.classList.remove('open');}else{box.classList.add('show');fab.classList.add('open');if(!opened){addMsg('bot','Hello! Welcome to Darepack\n\nAsk me about our machines, prices or contact details!');opened=true;}setTimeout(function(){inp.focus();},300);}});
+  xBtn.addEventListener('click',function(){box.classList.remove('show');fab.classList.remove('open');});
+  chips.querySelectorAll('.dp-chip').forEach(function(btn){btn.addEventListener('click',function(){chips.style.display='none';inp.value=btn.dataset.q;send();});});
+  function send(){var text=inp.value.trim();if(!text||busy)return;inp.value='';inp.style.height='auto';chips.style.display='none';addMsg('user',text);busy=true;go.disabled=true;showTyping();setTimeout(function(){hideTyping();addMsg('bot',findAns(text));busy=false;go.disabled=false;inp.focus();},600);}
+  go.addEventListener('click',send);
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
+  inp.addEventListener('input',function(){inp.style.height='auto';inp.style.height=Math.min(inp.scrollHeight,90)+'px';});
+})();
+</script>
+</body>
+</html>

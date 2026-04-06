@@ -1,0 +1,35 @@
+(function () {
+  var I = {
+    logo:            'images/hero_machine.png',
+    gts300e:         'images/hero_machine.png',
+    gts300s:         'images/hero_machine.png',
+    gts400e:         'images/hero_machine.png',
+    gts400s:         'images/hero_machine.png',
+    heroMachine:     'images/hero_machine.png',
+    augerFiller:     'images/hero_machine.png',
+    screwConveyor:   'images/feeding_screw_conveyor.jpg',
+    zTypeConveyor:   'images/feeding_ztype_conveyor.png',
+    vibratoryFeeder: 'images/feeding_vibratory_feeder.png',
+    beltConveyor:    'images/feeding_belt_conveyors.jpg',
+    turnRotaryTable: 'images/handling_turntable_conveyor.jpg',
+    handlingNew:     'images/handling_turntable_conveyor.jpg'
+  };
+  function set(s, src) {
+    document.querySelectorAll(s).forEach(function (e) { e.src = src; });
+  }
+  set('.js-logo',              I.logo);
+  set('.js-foot-logo',         I.logo);
+  set('.slide-machine img',    I.heroMachine);
+  set('.js-gts300e',           I.gts300e);
+  set('.js-gts300s',           I.gts300s);
+  set('.js-gts400e',           I.gts400e);
+  set('.js-gts400s',           I.gts400s);
+  set('.js-fillers',           I.augerFiller);
+  set('.js-feeding',           I.screwConveyor);
+  set('.js-feeding-belt',      I.beltConveyor);
+  set('.js-feeding-screw',     I.screwConveyor);
+  set('.js-feeding-vibratory', I.vibratoryFeeder);
+  set('.js-feeding-ztype',     I.zTypeConveyor);
+  set('.js-handling',          I.turnRotaryTable);
+  set('.js-handling-new',      I.handlingNew);
+})();
