@@ -38,7 +38,7 @@ img{display:block;max-width:100%;}
 .nav-link:hover,.nav-link.active{color:var(--red);}
 .nav-link:hover::after,.nav-link.active::after{width:100%;}
 .nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0;}
-.theme-toggle{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:17px;transition:all .2s;}
+.theme-toggle{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border);background:transparent;margin-left:4px;margin-right:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:17px;transition:all .2s;color:#333;flex-shrink:0;}
 .theme-toggle:hover{background:var(--grey);border-color:var(--red);}
 .nav-cta{background:var(--red);color:#fff;padding:10px 22px;border-radius:4px;font-size:12.5px;font-weight:700;letter-spacing:.5px;transition:all .2s;font-family:'Poppins',sans-serif;animation:pulse-glow 2s ease-in-out infinite;}
 .nav-cta:hover{background:var(--red2);animation:none;transform:translateY(-1px);box-shadow:0 4px 16px rgba(227,6,19,.4);}
@@ -215,6 +215,14 @@ footer{background:#0d0d0d;padding:72px 0 0;}
 .foot-logo{margin-bottom:16px;}
 .foot-logo img{height:48px;width:auto;max-width:200px;object-fit:contain;}
 .foot-desc{color:#999;font-size:13px;line-height:1.8;}
+.foot-socials{display:flex;align-items:center;gap:10px;margin-top:22px;flex-wrap:wrap;}
+.foot-social{width:38px;height:38px;border-radius:50%;border:1px solid #2a2a2a;background:#111;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;font-family:'Poppins',sans-serif;transition:transform .2s,border-color .2s,background .2s,color .2s;}
+.foot-social:hover{transform:translateY(-3px);border-color:var(--red);background:var(--red);color:#fff;}
+.foot-social.facebook{background:#1877f2;border-color:#1877f2;}
+.foot-social.linkedin{background:#0a66c2;border-color:#0a66c2;}
+.foot-social.youtube{background:#ff0000;border-color:#ff0000;}
+.foot-social.mail{background:#1f2937;border-color:#374151;}
+.foot-social.facebook:hover,.foot-social.linkedin:hover,.foot-social.youtube:hover,.foot-social.mail:hover{background:var(--red);border-color:var(--red);}
 .foot-col h5{font-size:11px;font-weight:700;letter-spacing:3px;color:#fff;text-transform:uppercase;margin-bottom:22px;padding-bottom:10px;border-bottom:1px solid #2a2a2a;}
 .foot-col ul{list-style:none;}
 .foot-col li{margin-bottom:11px;}
@@ -312,7 +320,7 @@ body.dark-mode .nav-dd-sub{color:#555;}
         <a href="products.html" class="nav-link">We Manufacture <span style="font-size:10px;margin-left:3px;">&#9660;</span></a>
         <div class="nav-dropdown">
           <a href="products.html#vffs" class="nav-dd-item"><span class="nav-dd-icon">&#9881;</span><span class="nav-dd-label">VFFS Machines<span class="nav-dd-sub">GTS-300S / GTS-400S</span></span></a>
-          <a href="products.html#fillers" class="nav-dd-item"><span class="nav-dd-icon">&#9878;</span><span class="nav-dd-label">Fillers &amp; Weighers<span class="nav-dd-sub">Auger, Cup, Net Scale, Belt</span></span></a>
+          <a href="products.html#fillers" class="nav-dd-item"><span class="nav-dd-icon">&#9878;</span><span class="nav-dd-label">Fillers &amp; Weighers<span class="nav-dd-sub">Auger, Cup, Net, Belt, Check</span></span></a>
           <a href="products.html#feeding" class="nav-dd-item"><span class="nav-dd-icon">&#128260;</span><span class="nav-dd-label">Feeding Systems<span class="nav-dd-sub">Belt, Z-Type, Screw, Vibratory</span></span></a>
           <a href="products.html#handling" class="nav-dd-item"><span class="nav-dd-icon">&#127981;</span><span class="nav-dd-label">Sec. Product Handling<span class="nav-dd-sub">Turn Table, Rotary, Takeaway</span></span></a>
         </div>
@@ -540,7 +548,7 @@ body.dark-mode .nav-dd-sub{color:#555;}
 <footer>
   <div class="sec-wrap">
     <div class="foot-grid">
-      <div><div class="foot-logo"><img src="images/logo.png" alt="Darepack"/></div><p class="foot-desc">Designing and manufacturing high-performance packaging machinery from Pune, Maharashtra. Trusted by 200+ businesses across India.</p></div>
+      <div><div class="foot-logo"><img src="images/logo.png" alt="Darepack"/></div><p class="foot-desc">Designing and manufacturing high-performance packaging machinery from Pune, Maharashtra. Trusted by 200+ businesses across India.</p><div class="foot-socials"><a class="foot-social facebook" href="https://www.facebook.com/share/1PURd4MZQA/" target="_blank" rel="noopener" aria-label="Darepack Facebook">f</a><a class="foot-social linkedin" href="https://www.linkedin.com/company/darepack-packaging-pvt-ltd/" target="_blank" rel="noopener" aria-label="Darepack LinkedIn">in</a><a class="foot-social youtube" href="https://youtube.com/@passion_for_packaging?si=6eo1_i-PIVCKonY7" target="_blank" rel="noopener" aria-label="Darepack YouTube">YT</a><a class="foot-social mail" href="mailto:info@darepackpackaging.com" aria-label="Email Darepack">@</a></div></div>
       <div class="foot-col col-products"><h5>We Manufacture</h5><ul><li><a href="products.html">GTS-300S VFFS</a></li><li><a href="products.html">GTS-400S VFFS</a></li><li><a href="products.html">Fillers &amp; Weighers</a></li><li><a href="products.html">Feeding Systems</a></li></ul></div>
       <div class="foot-col col-company"><h5>Company</h5><ul><li><a href="about.html">About Us</a></li><li><a href="index.html#why">Why Darepack</a></li><li><a href="services.html">Our Services</a></li><li><a href="industries.html">Industries</a></li><li><a href="index.html#clients">Our Clients</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="https://www.darepack.com" target="_blank">www.darepack.com</a></li></ul></div>
       <div class="foot-col col-contact"><h5>Contact Us</h5><ul><li><a href="tel:9850079331">&#128222; 9850079331</a></li><li><a href="tel:8805029057">&#128222; 8805029057</a></li><li><a href="https://wa.me/919850079331" target="_blank">&#128172; WhatsApp</a></li><li><a href="mailto:info@darepackpackaging.com">&#9993; Email Us</a></li><li><a href="contact.html">&#128205; Sanaswadi, Pune 412208</a></li><li><a href="contact.html">&#128336; Mon-Sat 10:00-18:00</a></li></ul></div>
