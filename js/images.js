@@ -4,11 +4,8 @@
 (function () {
   var I = {
     logo:            'images/logo.png',
-    gts300e:         'images/gts300s.png',
     gts300s:         'images/gts300s.png',
-    gts400e:         'images/gts400s.png',
     gts400s:         'images/gts400s.png',
-    heroMachine:     'images/gts300s.png',
     augerFiller:     'images/auger-filler.png',
     cupFiller:       'images/cup-filler.png',
     servoBelt:       'images/servo-belt.png',
@@ -29,10 +26,7 @@
 
   set('.js-logo',              I.logo);
   set('.js-foot-logo',         I.logo);
-  set('.slide-machine img',    I.heroMachine);
-  set('.js-gts300e',           I.gts300e);
   set('.js-gts300s',           I.gts300s);
-  set('.js-gts400e',           I.gts400e);
   set('.js-gts400s',           I.gts400s);
   set('.js-fillers',           I.augerFiller);
   set('.js-feeding',           I.screwConveyor);

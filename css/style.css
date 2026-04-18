@@ -31,11 +31,35 @@ img { display: block; max-width: 100%; }
 .topbar a:hover { color: var(--red); }
 
 /* ─── MAIN NAV ─── */
-.nav { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); transition: box-shadow .3s; }
+.nav { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); transition: box-shadow .3s, background .3s; }
 .nav.shadow { box-shadow: 0 4px 32px rgba(0,0,0,.08); }
 .nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+
+/* ─── LOGO — Base (Light Mode) ─── */
 .nav-logo { display: flex; align-items: center; background: transparent !important; padding: 0 !important; }
-.nav-logo img { height: 56px !important; width: auto !important; max-width: 200px !important; object-fit: contain !important; display: block !important; background: transparent !important; mix-blend-mode: multiply !important; }
+.nav-logo img {
+  height: 56px !important;
+  width: auto !important;
+  max-width: 200px !important;
+  object-fit: contain !important;
+  display: block !important;
+  background: transparent !important;
+  mix-blend-mode: normal !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  transition: background .3s, padding .3s, border-radius .3s;
+}
+
+body:not(.dark-mode) .nav-logo img {
+  background: transparent !important;
+  mix-blend-mode: normal !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
 .nav-links { display: flex; align-items: center; gap: 30px; flex-shrink: 1; }
 .nav-link { font-size: 13px; font-weight: 600; color: #333; padding: 4px 0; position: relative; transition: color .2s; white-space: nowrap; }
 .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: var(--red); transition: width .25s; }
@@ -258,7 +282,7 @@ img { display: block; max-width: 100%; }
 /* ─── ABOUT PAGE ─── */
 .about-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
 .about-imgbox { position: relative; }
-.about-mainimg { width: 100%; object-fit: contain; background: var(--grey); border-radius: 4px; padding: 24px; }
+.about-mainimg { width: 100%; height: 400px; object-fit: cover; object-position: top; background: var(--grey); border-radius: 4px; }
 .about-imgbox::before { content: ''; position: absolute; left: -12px; top: 10%; width: 5px; height: 80%; background: var(--red); border-radius: 3px; }
 .about-badge { position: absolute; bottom: -20px; right: -20px; background: var(--red); color: #fff; padding: 24px 28px; text-align: center; border-radius: 2px; box-shadow: 0 12px 32px rgba(227,6,19,.4); }
 .about-badge strong { font-size: 2.4rem; font-weight: 800; line-height: 1; display: block; }
@@ -273,8 +297,28 @@ img { display: block; max-width: 100%; }
 /* ─── FOOTER ─── */
 footer { background: #0d0d0d; padding: 72px 0 0; }
 .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 56px; padding-bottom: 56px; border-bottom: 1px solid #222; }
-.foot-logo { margin-bottom: 16px; background: transparent !important; }
-.foot-logo img { height: 48px !important; width: auto !important; max-width: 200px !important; object-fit: contain !important; display: block !important; background: #fff !important; padding: 8px 12px !important; border-radius: 6px !important; }
+
+/* Footer logo — transparent by default, no white box */
+.foot-logo {
+  margin-bottom: 16px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+.foot-logo img {
+  height: 48px !important;
+  width: auto !important;
+  max-width: 200px !important;
+  object-fit: contain !important;
+  display: block !important;
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
 .foot-desc { color: #999; font-size: 13px; line-height: 1.8; }
 .foot-col h5 { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: #ffffff; text-transform: uppercase; margin-bottom: 22px; padding-bottom: 10px; border-bottom: 1px solid #2a2a2a; }
 .foot-col ul { list-style: none; }
@@ -391,8 +435,9 @@ body.dark-mode .nav-link:hover, body.dark-mode .nav-link.active { color: var(--r
 body.dark-mode .nav-phone { color: #ccc; }
 body.dark-mode .topbar { background: #080808; }
 body.dark-mode .sec { background: #0d0d0d; }
-body.dark-mode .sec-h2 { color: #f0f0f0; }
+body.dark-mode .sec-h2 { color: #ffffff !important; }
 body.dark-mode .sec-p { color: #a0a8b8; }
+body.dark-mode .sec-label { color: var(--red) !important; }
 body.dark-mode .solutions-sec { background: #111118; }
 body.dark-mode .process-sec { background: #111118; }
 body.dark-mode .about-stats { border-top-color: #222; }
@@ -435,20 +480,90 @@ body.dark-mode .cquote-text { color: #a0a8b8; }
 body.dark-mode .cquote-name { color: #f0f0f0; }
 body.dark-mode footer { background: #080808; }
 body.dark-mode .foot-bottom p { color: #444; }
-body.dark-mode .nav-dropdown { background: #1a1a2e; border-color: #2a2a3a; }
+body.dark-mode .nav-dropdown { background: #12121f; border-color: #303044; }
 body.dark-mode .nav-dd-item { color: #ccc; }
-body.dark-mode .nav-dd-item:hover { background: #111118; }
-body.dark-mode .nav-dd-sub { color: #666; }
+body.dark-mode .nav-dd-item:hover { background: #0b0b12; }
+body.dark-mode .nav-dd-sub { color: #9aa0b0; }
 body.dark-mode .page-hero { background: linear-gradient(115deg,#020208 0%,#05050f 100%); }
 body.dark-mode .about-mainimg { background: #1a1a2e; }
 body.dark-mode .feat { border-color: #2a2a3a; }
 body.dark-mode .feat h4 { color: #f0f0f0; }
 body.dark-mode .feat p { color: #a0a8b8; }
-body.dark-mode .nav-logo img { mix-blend-mode: normal !important; background: #fff !important; padding: 6px 10px !important; border-radius: 6px !important; }
-body.dark-mode .foot-logo img { background: #fff !important; }
+
+/* ─── DARK MODE — Nav Logo ─── */
+body.dark-mode .nav-logo img {
+  mix-blend-mode: normal !important;
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* ─── DARK MODE — Footer Logo — NO white box ─── */
+body.dark-mode .foot-logo {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+body.dark-mode .foot-logo img {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* ─── DARK MODE — Comparison Table HIGH CONTRAST FIX ─── */
+body.dark-mode table {
+  background: #12121f !important;
+  color: #f0f0f0 !important;
+  border-collapse: collapse !important;
+}
+body.dark-mode table thead tr,
+body.dark-mode table th {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+body.dark-mode table td {
+  background: #12121f !important;
+  color: #e8e8e8 !important;
+  border-color: #2a2a3a !important;
+}
+body.dark-mode table tr:nth-child(even) td {
+  background: #1a1a2e !important;
+  color: #e8e8e8 !important;
+}
+body.dark-mode table tr:hover td {
+  background: #22223a !important;
+  color: #ffffff !important;
+}
+body.dark-mode .comparison-table,
+body.dark-mode .compare-sec,
+body.dark-mode [class*="compare"] {
+  background: #12121f !important;
+  color: #e8e8e8 !important;
+}
 
 /* ─── THEME TOGGLE BUTTON ─── */
-.theme-toggle { width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid var(--border); background: transparent; margin-left: 4px; margin-right: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 17px; transition: all .2s; flex-shrink: 0; color: #333; }
+.theme-toggle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  margin-left: 4px;
+  margin-right: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  transition: all .2s;
+  flex-shrink: 0;
+  color: #333;
+}
 .theme-toggle:hover { background: var(--grey); border-color: var(--red); }
 body.dark-mode .theme-toggle { border-color: #333; color: #ccc; }
 body.dark-mode .theme-toggle:hover { background: #1a1a2e; border-color: var(--red); }
@@ -458,3 +573,87 @@ body.dark-mode .theme-toggle:hover { background: #1a1a2e; border-color: var(--re
 .nav-dropdown { visibility: hidden; opacity: 0; transform: translateY(8px); transition: opacity .25s ease, transform .25s ease, visibility .25s ease; pointer-events: none; }
 .nav-item:hover .nav-dropdown { visibility: visible; opacity: 1; transform: translateY(0); pointer-events: all; }
 .nav-item::after { content: ''; position: absolute; top: 100%; left: 0; width: 100%; height: 12px; }
+
+
+/* ══════════════════════════════════════════
+   BUGFIXES — April 2026
+══════════════════════════════════════════ */
+
+/* FIX 1 — VFFS Comparison Table: visible row lines in dark mode */
+body.dark-mode .compare-table,
+body.dark-mode [class*="vffs-compare"],
+body.dark-mode .comparison-section table,
+body.dark-mode table {
+  border-collapse: collapse !important;
+}
+body.dark-mode table tr {
+  border-bottom: 1px solid #2e2e45 !important;
+}
+body.dark-mode table td,
+body.dark-mode table th {
+  border: 1px solid #2e2e45 !important;
+}
+
+/* FIX 3 — Industries grid: industry names visible in dark mode */
+body.dark-mode [style*="font-size:11.5px;font-weight:600;color:#333"],
+body.dark-mode [style*="font-size:17px;font-weight:800;color:#111"] {
+  color: #f0f0f0 !important;
+}
+
+/* Industries secondary grid — text always white in dark mode */
+body.dark-mode .ind-name { color: #f0f0f0 !important; }
+
+/* Any inline-styled industry name override */
+body.dark-mode div[style*="color:#333"],
+body.dark-mode div[style*="color: #333"],
+body.dark-mode div[style*="color:#111"],
+body.dark-mode div[style*="color: #111"] {
+  color: #e8e8e8 !important;
+}
+body.dark-mode p[style*="color:#666"],
+body.dark-mode p[style*="color: #666"] {
+  color: #9aa0b0 !important;
+}
+
+/* ══════════════════════════════════════════
+   FIX — VFFS Comparison Section + Table Dark Mode
+══════════════════════════════════════════ */
+
+/* Fix the light grey section background behind the table */
+body.dark-mode section[style*="background:#f7f7f7"],
+body.dark-mode section[style*="background: #f7f7f7"] {
+  background: #0d0d0d !important;
+}
+
+/* Section heading text */
+body.dark-mode section[style*="background:#f7f7f7"] .sec-h2,
+body.dark-mode section[style*="background:#f7f7f7"] .sec-label {
+  color: #ffffff !important;
+}
+
+/* Table rows */
+body.dark-mode table tbody tr {
+  background: #111118 !important;
+  border-bottom: 1px solid #2a2a3a !important;
+}
+body.dark-mode table tbody tr:nth-child(even) {
+  background: #1a1a2e !important;
+}
+body.dark-mode table tbody tr td {
+  background: inherit !important;
+  color: #e8e8e8 !important;
+  border-bottom: 1px solid #2a2a3a !important;
+}
+body.dark-mode table tbody tr td[style*="color:#555"],
+body.dark-mode table tbody tr td[style*="color: #555"] {
+  color: #a0a8b8 !important;
+}
+body.dark-mode table tbody tr td[style*="color:#e30613"] {
+  color: var(--red) !important;
+}
+body.dark-mode table thead tr,
+body.dark-mode table thead th {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-bottom: 2px solid #2a2a3a !important;
+}

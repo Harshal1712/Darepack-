@@ -118,14 +118,14 @@
 
 /* ─── Dark mode dropdown ─── */
 body.dark-mode .nav-dropdown {
-  background: #1a1a2e;
-  border-color: #2a2a3a;
-  box-shadow: 0 16px 48px rgba(0,0,0,.4);
+  background: #12121f;
+  border-color: #303044;
+  box-shadow: 0 18px 54px rgba(0,0,0,.58);
 }
 
 body.dark-mode .nav-dropdown::before {
-  background: #1a1a2e;
-  border-color: #2a2a3a;
+  background: #12121f;
+  border-color: #303044;
 }
 
 body.dark-mode .nav-dd-item {
@@ -133,7 +133,7 @@ body.dark-mode .nav-dd-item {
 }
 
 body.dark-mode .nav-dd-item:hover {
-  background: #111118;
+  background: #0b0b12;
   color: #ff2a3b;
 }
 
@@ -154,5 +154,5 @@ body.dark-mode .nav-dd-item:hover .nav-dd-label {
 }
 
 body.dark-mode .nav-dd-sub {
-  color: #555;
+  color: #9aa0b0;
 }

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Our Services — Darepack | VFFS Refurbishment, Spare Parts &amp; On-Site Support</title>
+<meta name="description" content="Darepack offers VFFS machine refurbishment, genuine spare parts supply, and expert on-site field services across India."/>
+<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;color:#333;background:#fff;overflow-x:hidden;}
+h1,h2,h3,h4,h5{font-family:'Poppins',sans-serif;}
+a{text-decoration:none;color:inherit;}
+img{display:block;max-width:100%;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-thumb{background:#ff2a3b;border-radius:2px;}
+:root{--red:#ff2a3b;--red2:#cc0010;--black:#0f1115;--grey:#f4f5f7;--border:#e2e5e9;--muted:#5f6570;--max:1280px;--pad:40px;}
+
+/* TOP BAR */
+.topbar{background:#1a1a1a;padding:8px 0;}
+.topbar-inner{max-width:var(--max);margin:0 auto;padding:0 var(--pad);display:flex;justify-content:flex-end;align-items:center;}
+.topbar a{color:#bbb;font-size:12.5px;font-weight:500;display:flex;align-items:center;gap:7px;padding:0 14px;border-right:1px solid #333;transition:color .2s;}
+.topbar a:last-child{border-right:none;padding-right:0;}
+.topbar a:hover{color:var(--red);}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:box-shadow .3s;}
+.nav.shadow{box-shadow:0 4px 32px rgba(0,0,0,.08);}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:0 var(--pad);height:78px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.nav-logo{display:flex;align-items:center;}
+.nav-logo img{height:56px;width:auto;max-width:200px;object-fit:contain;}
+.nav-links{display:flex;align-items:center;gap:30px;}
+.nav-link{font-size:13px;font-weight:600;color:#333;padding:4px 0;position:relative;transition:color .2s;white-space:nowrap;}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--red);transition:width .25s;}
+.nav-link:hover,.nav-link.active{color:var(--red);}
+.nav-link:hover::after,.nav-link.active::after{width:100%;}
+.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.theme-toggle{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:17px;transition:all .2s;}
+.theme-toggle:hover{background:var(--grey);border-color:var(--red);}
+.nav-cta{background:var(--red);color:#fff;padding:10px 22px;border-radius:4px;font-size:12.5px;font-weight:700;letter-spacing:.5px;transition:all .2s;font-family:'Poppins',sans-serif;animation:pulse-glow 2s ease-in-out infinite;}
+.nav-cta:hover{background:var(--red2);animation:none;transform:translateY(-1px);box-shadow:0 4px 16px rgba(227,6,19,.4);}
+@keyframes pulse-glow{0%,100%{box-shadow:0 0 0 0 rgba(255,42,59,.7);}50%{box-shadow:0 0 0 10px rgba(255,42,59,0);}}
+.nav-item{position:relative;}
+.nav-dropdown{position:absolute;top:calc(100% + 12px);left:-20px;background:#fff;border:1px solid var(--border);border-radius:8px;padding:8px 0;min-width:260px;box-shadow:0 16px 48px rgba(0,0,0,.12);visibility:hidden;opacity:0;transform:translateY(8px);transition:all .25s ease;pointer-events:none;z-index:9999;}
+.nav-item:hover .nav-dropdown{visibility:visible;opacity:1;transform:translateY(0);pointer-events:all;}
+.nav-item::after{content:'';position:absolute;top:100%;left:0;width:100%;height:12px;}
+.nav-dd-item{display:flex;align-items:center;gap:13px;padding:11px 20px;transition:background .18s;color:#333;}
+.nav-dd-item:hover{background:#fff5f5;}
+.nav-dd-icon{font-size:18px;flex-shrink:0;width:28px;text-align:center;}
+.nav-dd-label{display:flex;flex-direction:column;font-size:13px;font-weight:600;color:#222;}
+.nav-dd-sub{font-size:11px;color:#999;font-weight:400;margin-top:1px;}
+
+/* PAGE HERO */
+.page-hero{position:relative;background:linear-gradient(115deg,#06060e 0%,#0e0010 50%,#06060e 100%);padding:88px 0 80px;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,42,59,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,42,59,.035) 1px,transparent 1px);background-size:54px 54px;}
+.hero-glow{position:absolute;top:-180px;right:-180px;width:650px;height:650px;background:radial-gradient(ellipse,rgba(255,42,59,.14) 0%,transparent 65%);pointer-events:none;}
+.hero-glow2{position:absolute;bottom:-200px;left:-100px;width:500px;height:500px;background:radial-gradient(ellipse,rgba(100,0,255,.06) 0%,transparent 65%);pointer-events:none;}
+.page-hero-inner{position:relative;z-index:1;max-width:var(--max);margin:0 auto;padding:0 var(--pad);}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:22px;}
+.breadcrumb a{color:rgba(255,255,255,.4);font-size:12px;transition:color .2s;}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb .sep{color:rgba(255,255,255,.2);font-size:12px;}
+.breadcrumb .cur{color:rgba(255,255,255,.75);font-size:12px;}
+.page-label{font-size:11px;font-weight:700;letter-spacing:3.5px;color:var(--red);text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.page-label::before{content:'';width:36px;height:2px;background:var(--red);flex-shrink:0;}
+.page-hero h1{font-size:clamp(2.8rem,5.5vw,4.8rem);font-weight:900;color:#fff;letter-spacing:-1.5px;line-height:1.06;margin-bottom:20px;}
+.page-hero h1 em{font-style:normal;color:var(--red);}
+.page-hero p{color:rgba(255,255,255,.58);font-size:17px;max-width:580px;line-height:1.82;margin-bottom:38px;}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:60px;}
+.hero-trust{display:flex;gap:12px;flex-wrap:wrap;padding-top:40px;border-top:1px solid rgba(255,255,255,.07);}
+.trust-pill{display:flex;align-items:center;gap:10px;padding:10px 18px;border:1px solid rgba(255,42,59,.28);border-radius:50px;background:rgba(255,42,59,.07);}
+.trust-pill span{font-size:12px;font-weight:600;color:rgba(255,255,255,.78);}
+
+/* TABS BAR */
+.srv-tabs-bar{background:#fff;border-bottom:2px solid var(--border);position:sticky;top:78px;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,.05);}
+.srv-tabs-inner{max-width:var(--max);margin:0 auto;padding:0 var(--pad);display:flex;}
+.srv-tab-link{padding:18px 28px;font-size:12.5px;font-weight:700;color:#777;text-transform:uppercase;letter-spacing:.8px;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s;white-space:nowrap;cursor:pointer;font-family:'Poppins',sans-serif;display:flex;align-items:center;gap:9px;}
+.srv-tab-link:hover{color:var(--red);}
+.srv-tab-link.active{color:var(--red);border-bottom-color:var(--red);}
+.tab-dot{width:8px;height:8px;border-radius:50%;background:currentColor;}
+
+/* SECTIONS */
+.srv-section{padding:96px 0;}
+.srv-section.bg-alt{background:#f8f9fb;}
+.sec-wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad);}
+.srv-sec-label{font-size:10.5px;font-weight:700;letter-spacing:3.5px;color:var(--red);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.srv-sec-label::before{content:'';width:28px;height:2px;background:var(--red);flex-shrink:0;}
+.srv-sec-h2{font-size:clamp(2rem,3.5vw,2.8rem);font-weight:800;color:var(--black);letter-spacing:-1px;line-height:1.15;margin-bottom:14px;}
+.srv-sec-h2 em{font-style:normal;color:var(--red);}
+.srv-sec-p{font-size:15.5px;color:var(--muted);line-height:1.82;max-width:640px;}
+
+/* BUTTONS */
+.btn-red{background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;padding:13px 34px;border-radius:6px;font-size:13.5px;font-weight:700;letter-spacing:.6px;display:inline-flex;align-items:center;gap:8px;transition:all .3s;cursor:pointer;border:none;font-family:'Poppins',sans-serif;text-transform:uppercase;}
+.btn-red:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(255,42,59,.4);}
+.btn-ghost{border:2px solid rgba(255,255,255,.4);color:#fff;padding:12px 30px;border-radius:6px;font-size:13.5px;font-weight:700;display:inline-flex;align-items:center;gap:8px;transition:all .3s;font-family:'Poppins',sans-serif;text-transform:uppercase;}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,0.1);transform:translateY(-2px);}
+.btn-white{background:#fff;color:var(--black);padding:14px 40px;font-size:13.5px;font-weight:800;border-radius:6px;display:inline-block;transition:all .3s;text-transform:uppercase;letter-spacing:0.5px;font-family:'Poppins',sans-serif;}
+.btn-white:hover{transform:translateY(-3px);color:var(--red);box-shadow:0 14px 36px rgba(0,0,0,.25);}
+
+/* ── REFURBISHMENT ── */
+.refurb-layout{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;margin-bottom:64px;}
+.refurb-big-img{border-radius:14px;overflow:hidden;box-shadow:0 24px 72px rgba(0,0,0,.15);position:relative;}
+.refurb-big-img img{width:100%;height:440px;object-fit:cover;transition:transform .6s;}
+.refurb-big-img:hover img{transform:scale(1.03);}
+.refurb-big-img .img-tag{position:absolute;bottom:16px;left:16px;background:var(--red);color:#fff;font-size:10px;font-weight:800;letter-spacing:2px;padding:7px 14px;border-radius:4px;}
+.refurb-steps{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px;}
+.rstep{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 20px;position:relative;overflow:hidden;transition:all .3s;}
+.rstep:hover{border-color:var(--red);transform:translateY(-4px);box-shadow:0 12px 32px rgba(255,42,59,.1);}
+.rstep::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.rstep:hover::after{transform:scaleX(1);}
+.rstep-num{font-size:2.2rem;font-weight:900;color:rgba(255,42,59,.55);line-height:1;margin-bottom:8px;font-family:'Poppins',sans-serif;}
+
+/* Dark mode: make numbers even more visible */
+body.dark-mode .rstep-num { color: rgba(255,42,59,.85) !important; }.rstep-title{font-size:13.5px;font-weight:700;color:var(--black);margin-bottom:5px;}
+.rstep-desc{font-size:12.5px;color:var(--muted);line-height:1.65;}
+.refurb-gallery{display:grid;grid-template-columns:1.3fr 1fr;gap:18px;margin-top:0;}
+.gallery-main{border-radius:12px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.1);}
+.gallery-main img{width:100%;height:460px;object-fit:cover;transition:transform .6s;}
+.gallery-main:hover img{transform:scale(1.03);}
+.gallery-side{display:flex;flex-direction:column;gap:18px;}
+.gallery-thumb{border-radius:10px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.08);flex:1;}
+.gallery-thumb img{width:100%;height:100%;object-fit:cover;min-height:200px;transition:transform .5s;}
+.gallery-thumb:hover img{transform:scale(1.05);}
+.refurb-stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--black);border-radius:14px;overflow:hidden;margin-top:48px;}
+.rstat{padding:36px 24px;text-align:center;border-right:1px solid rgba(255,255,255,.07);}
+.rstat:last-child{border-right:none;}
+.rstat-num{font-size:2.4rem;font-weight:900;color:var(--red);font-family:'Poppins',sans-serif;}
+.rstat-lbl{font-size:11px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1.5px;margin-top:5px;}
+
+/* ── SPARE PARTS ── */
+.parts-layout{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
+.parts-list{display:flex;flex-direction:column;gap:12px;margin-top:30px;}
+.part-item{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;border:1px solid var(--border);border-radius:8px;background:#fff;transition:all .25s;}
+.part-item:hover{border-color:var(--red);box-shadow:0 6px 24px rgba(255,42,59,.08);}
+.part-ico{width:40px;height:40px;background:#fff0f0;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.part-name{font-size:13.5px;font-weight:700;color:var(--black);}
+.part-desc{font-size:12px;color:var(--muted);margin-top:2px;line-height:1.55;}
+.parts-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.parts-photo{border-radius:10px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.1);}
+.parts-photo img{width:100%;height:230px;object-fit:cover;transition:transform .5s;}
+.parts-photo:hover img{transform:scale(1.06);}
+.parts-photo.wide{grid-column:span 2;}
+.parts-photo.wide img{height:260px;}
+.delivery-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px;}
+.dcard{background:var(--black);border-radius:10px;padding:32px 26px;text-align:center;border:1px solid rgba(255,42,59,.12);transition:border-color .3s;}
+.dcard:hover{border-color:rgba(255,42,59,.45);}
+.dcard-ico{font-size:30px;margin-bottom:14px;}
+.dcard-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:8px;}
+.dcard-desc{font-size:12.5px;color:rgba(255,255,255,.48);line-height:1.65;}
+
+/* ── ON-SITE ── */
+.onsite-layout{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;margin-bottom:72px;}
+.onsite-feat{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;border:1px solid var(--border);border-radius:8px;transition:all .25s;margin-bottom:12px;}
+.onsite-feat:hover{border-color:var(--red);box-shadow:0 6px 24px rgba(255,42,59,.08);}
+.onsite-feat-ico{font-size:20px;flex-shrink:0;margin-top:1px;}
+.onsite-feat-title{font-size:14px;font-weight:700;color:var(--black);margin-bottom:3px;}
+.onsite-feat-desc{font-size:12.5px;color:var(--muted);line-height:1.6;}
+.onsite-photos{display:flex;flex-direction:column;gap:16px;}
+.onsite-photo{border-radius:12px;overflow:hidden;box-shadow:0 10px 32px rgba(0,0,0,.12);}
+.onsite-photo img{width:100%;height:240px;object-fit:cover;transition:transform .5s;}
+.onsite-photo:hover img{transform:scale(1.04);}
+.amc-section-head{text-align:center;margin-bottom:48px;}
+.amc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.amc-card{border-radius:12px;overflow:hidden;border:1px solid var(--border);transition:all .3s;position:relative;}
+.amc-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(0,0,0,.1);}
+.amc-card.featured{border-color:var(--red);}
+.amc-card.featured::before{content:'MOST POPULAR';position:absolute;top:14px;right:14px;background:var(--red);color:#fff;font-size:9px;font-weight:800;letter-spacing:1.5px;padding:4px 10px;border-radius:20px;}
+.amc-head{padding:28px 28px 20px;background:var(--black);}
+.amc-card.featured .amc-head{background:linear-gradient(135deg,var(--red),var(--red2));}
+.amc-plan{font-size:10px;font-weight:700;letter-spacing:2.5px;color:rgba(255,255,255,.55);text-transform:uppercase;margin-bottom:6px;}
+.amc-name{font-size:1.45rem;font-weight:800;color:#fff;}
+.amc-body{padding:24px 28px 28px;background:#fff;}
+.amc-feats{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:22px;}
+.amc-feats li{font-size:13px;color:#555;display:flex;align-items:flex-start;gap:9px;}
+.amc-feats li::before{content:'✓';color:var(--red);font-weight:800;flex-shrink:0;}
+.amc-cta{display:block;text-align:center;padding:12px 20px;border-radius:6px;font-size:12.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;transition:all .25s;font-family:'Poppins',sans-serif;border:2px solid var(--red);color:var(--red);}
+.amc-card.featured .amc-cta{background:var(--red);color:#fff;border-color:var(--red);}
+.amc-cta:hover{background:var(--red);color:#fff;}
+.response-strip{margin-top:56px;padding:40px 52px;background:linear-gradient(135deg,#0d0d0d,#1a0005);border-radius:14px;display:flex;align-items:center;justify-content:space-between;gap:32px;border:1px solid rgba(255,42,59,.2);flex-wrap:wrap;}
+.response-text h3{font-size:1.45rem;font-weight:800;color:#fff;margin-bottom:6px;}
+.response-text p{font-size:14px;color:rgba(255,255,255,.5);}
+.response-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.rbtn{padding:13px 26px;border-radius:6px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:9px;transition:all .25px;font-family:'Poppins',sans-serif;}
+.rbtn.red{background:var(--red);color:#fff;}
+.rbtn.red:hover{background:var(--red2);transform:translateY(-2px);}
+.rbtn.outline{border:1.5px solid rgba(255,255,255,.25);color:#fff;}
+.rbtn.outline:hover{border-color:#fff;background:rgba(255,255,255,.08);}
+
+/* WHY SECTION */
+.why-service{background:var(--black);padding:96px 0;}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #222;margin-top:56px;}
+.wcard{padding:40px 30px;border-right:1px solid #222;position:relative;transition:background .3s;}
+.wcard:last-child{border-right:none;}
+.wcard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .35s;}
+.wcard:hover{background:#181818;}
+.wcard:hover::after{transform:scaleX(1);}
+.wcard-ico{width:52px;height:52px;background:rgba(255,42,59,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px;}
+.wcard-title{font-size:15px;font-weight:700;color:#fff;margin-bottom:10px;}
+.wcard-desc{font-size:13px;color:#666;line-height:1.7;}
+
+/* CTA */
+.cta-band{background:var(--red);padding:80px 0;position:relative;overflow:hidden;}
+.cta-band::before{content:'';position:absolute;right:-100px;top:-80px;width:400px;height:400px;background:rgba(255,255,255,.06);border-radius:50%;}
+.cta-band::after{content:'';position:absolute;left:-60px;bottom:-80px;width:300px;height:300px;background:rgba(0,0,0,.07);border-radius:50%;}
+.cta-inner{position:relative;z-index:1;text-align:center;max-width:700px;margin:0 auto;padding:0 40px;}
+.cta-inner h2{font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#fff;letter-spacing:-.5px;margin-bottom:14px;line-height:1.15;}
+.cta-inner p{color:rgba(255,255,255,.85);font-size:16px;margin-bottom:32px;line-height:1.7;}
+
+/* FOOTER */
+footer{background:#0d0d0d;padding:72px 0 0;}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:56px;padding-bottom:56px;border-bottom:1px solid #222;}
+.foot-logo{margin-bottom:16px;}
+.foot-logo img{height:48px;width:auto;max-width:200px;object-fit:contain;}
+.foot-desc{color:#999;font-size:13px;line-height:1.8;}
+.foot-col h5{font-size:11px;font-weight:700;letter-spacing:3px;color:#fff;text-transform:uppercase;margin-bottom:22px;padding-bottom:10px;border-bottom:1px solid #2a2a2a;}
+.foot-col ul{list-style:none;}
+.foot-col li{margin-bottom:11px;}
+.foot-col.col-products a{color:#f5a623;font-size:13px;transition:color .2s;display:flex;align-items:center;gap:6px;}
+.foot-col.col-products a:hover{color:#fff;}
+.foot-col.col-products a::before{content:'→';font-size:11px;color:var(--red);}
+.foot-col.col-company a{color:#7ecdf5;font-size:13px;transition:color .2s;}
+.foot-col.col-company a:hover{color:#fff;}
+.foot-col.col-contact a{color:#6ee7b7;font-size:13px;transition:color .2s;display:flex;align-items:center;gap:7px;}
+.foot-col.col-contact a:hover{color:#fff;}
+.foot-bottom{padding:22px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.foot-bottom p{color:#555;font-size:12px;}
+.foot-bottom a{color:#888;font-size:12px;transition:color .2s;}
+.foot-bottom a:hover{color:var(--red);}
+
+/* FAB */
+#dp-fab{position:fixed;bottom:28px;right:28px;width:58px;height:58px;background:linear-gradient(135deg,#ff2a3b,#cc0010);border-radius:50%;border:none;cursor:pointer;z-index:99999;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(227,6,19,.45);transition:transform .2s;}
+#dp-fab:hover{transform:scale(1.1);}
+#dp-fab svg{width:26px;height:26px;fill:#fff;}
+
+/* DARK MODE */
+body.dark-mode{background:#0d0d0d;color:#e0e0e0;}
+body.dark-mode .nav{background:rgba(13,13,13,0.97);border-bottom-color:#222;}
+body.dark-mode .nav-link{color:#ccc;}
+body.dark-mode .nav-link:hover,body.dark-mode .nav-link.active{color:var(--red);}
+body.dark-mode .theme-toggle{border-color:#333;color:#ccc;}
+body.dark-mode .topbar{background:#080808;}
+body.dark-mode .srv-tabs-bar{background:#0d0d0d;border-bottom-color:#222;}
+body.dark-mode .srv-tab-link{color:#555;}
+body.dark-mode .srv-tab-link.active{color:var(--red);}
+body.dark-mode .srv-section.bg-alt{background:#111118;}
+body.dark-mode .srv-sec-h2{color:#f0f0f0;}
+body.dark-mode .srv-sec-p{color:#a0a8b8;}
+body.dark-mode .rstep{background:#1a1a2e;border-color:#2a2a3a;}
+body.dark-mode .rstep-title{color:#f0f0f0;}
+body.dark-mode .part-item{background:#1a1a2e;border-color:#2a2a3a;}
+body.dark-mode .part-name{color:#f0f0f0;}
+body.dark-mode .onsite-feat{border-color:#2a2a3a;}
+body.dark-mode .onsite-feat-title{color:#f0f0f0;}
+body.dark-mode .amc-body{background:#1a1a2e;}
+body.dark-mode .amc-feats li{color:#a0a8b8;}
+body.dark-mode .amc-card{border-color:#2a2a3a;}
+body.dark-mode .nav-dropdown{background:#1a1a2e;border-color:#2a2a3a;}
+body.dark-mode .nav-dd-label{color:#ccc;}
+body.dark-mode .nav-dd-item:hover{background:#111118;}
+body.dark-mode .nav-dd-sub{color:#555;}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .refurb-layout,.parts-layout,.onsite-layout{grid-template-columns:1fr;}
+  .refurb-gallery{grid-template-columns:1fr;}
+  .gallery-main img{height:320px;}
+  .why-grid{grid-template-columns:1fr 1fr;}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:36px;}
+  .refurb-stats{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  .topbar{display:none;}
+  .nav-links{gap:16px;}
+  .refurb-steps{grid-template-columns:1fr;}
+  .amc-grid{grid-template-columns:1fr;}
+  .delivery-strip{grid-template-columns:1fr;}
+  .why-grid{grid-template-columns:1fr 1fr;}
+  .foot-grid{grid-template-columns:1fr;gap:32px;}
+  .parts-photos{grid-template-columns:1fr;}
+  .parts-photo.wide img,.parts-photo img{height:220px;}
+  .response-strip{flex-direction:column;}
+}
+@media(max-width:480px){
+  :root{--pad:20px;}
+  .nav-links{display:none;}
+  .refurb-stats{grid-template-columns:1fr 1fr;}
+  .why-grid{grid-template-columns:1fr;}
+  .hero-trust{gap:8px;}
+  .trust-pill{padding:8px 12px;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="topbar-inner">
+  <a href="tel:9850079331">&#128222; +91 9850079331</a>
+  <a href="tel:8805029057">&#128222; +91 8805029057</a>
+  <a href="mailto:info@darepackpackaging.com">&#9993; info@darepackpackaging.com</a>
+  <a href="https://www.darepack.com" target="_blank">&#127760; www.darepack.com</a>
+</div></div>
+
+<nav class="nav" id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="images/logo(1).png" data-light-src="images/logo(1).png" data-dark-src="images/logo.png" alt="Darepack"/></a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <div class="nav-item">
+        <a href="products.html" class="nav-link">We Manufacture <span style="font-size:10px;margin-left:3px;">&#9660;</span></a>
+        <div class="nav-dropdown">
+          <a href="products.html#vffs" class="nav-dd-item"><span class="nav-dd-icon">&#9881;</span><span class="nav-dd-label">VFFS Machines<span class="nav-dd-sub">GTS-300S / GTS-400S</span></span></a>
+          <a href="products.html#fillers" class="nav-dd-item"><span class="nav-dd-icon">&#9878;</span><span class="nav-dd-label">Fillers &amp; Weighers<span class="nav-dd-sub">Auger, Cup, Net Scale, Belt</span></span></a>
+          <a href="products.html#feeding" class="nav-dd-item"><span class="nav-dd-icon">&#128260;</span><span class="nav-dd-label">Feeding Systems<span class="nav-dd-sub">Belt, Z-Type, Screw, Vibratory</span></span></a>
+          <a href="products.html#handling" class="nav-dd-item"><span class="nav-dd-icon">&#127981;</span><span class="nav-dd-label">Sec. Product Handling<span class="nav-dd-sub">Turn Table, Rotary, Takeaway</span></span></a>
+        </div>
+      </div>
+      <a href="services.html" class="nav-link active">Our Services</a>
+      <a href="industries.html" class="nav-link">Industries Served</a>
+      <a href="index.html#clients" class="nav-link">Our Clients</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button class="theme-toggle" id="theme-toggle" title="Toggle Dark Mode">🌙</button>
+      <a href="contact.html" class="nav-cta">Get Quote</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep"> › </span><span class="cur">Our Services</span>
+    </div>
+    <div class="page-label">After-Sales &amp; Support</div>
+    <h1>Your Machine's<br/>Lifetime <em>Partner</em></h1>
+    <p>Beyond manufacturing — Darepack engineers are with you every step of the way. From machine refurbishment to genuine spare parts and expert on-site support across India.</p>
+    <div class="hero-ctas">
+      <a href="contact.html" class="btn-red">Enquire Now &#8594;</a>
+      <a href="tel:9850079331" class="btn-ghost">&#128222; Call Us Now</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-pill"><span>&#128295; VFFS Refurbishment</span></div>
+      <div class="trust-pill"><span>&#9881;&#65039; Genuine Spare Parts</span></div>
+      <div class="trust-pill"><span>&#128295; On-Site Field Support</span></div>
+      <div class="trust-pill"><span>&#128203; AMC Contracts</span></div>
+      <div class="trust-pill"><span>&#128666; Pan-India Delivery</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STICKY TABS -->
+<div class="srv-tabs-bar">
+  <div class="srv-tabs-inner">
+    <a href="#refurbishment" class="srv-tab-link active"><span class="tab-dot"></span>VFFS Refurbishment</a>
+    <a href="#spareparts" class="srv-tab-link"><span class="tab-dot"></span>Spare Parts Supply</a>
+    <a href="#onsite" class="srv-tab-link"><span class="tab-dot"></span>On-Site Services</a>
+  </div>
+</div>
+
+<!-- SERVICE 1 — REFURBISHMENT -->
+<section class="srv-section" id="refurbishment">
+  <div class="sec-wrap">
+    <div class="refurb-layout">
+      <div>
+        <div class="srv-sec-label">Reconditioning Service</div>
+        <h2 class="srv-sec-h2">VFFS Machine<br/><em>Refurbishment</em></h2>
+        <p class="srv-sec-p">Breathe new life into your aging VFFS packaging machines. Our comprehensive refurbishment service restores your machine to like-new performance — at a fraction of the cost of a brand-new unit. Every refurbished machine leaves our Pune facility fully tested and production-ready.</p>
+        <div class="refurb-steps">
+          <div class="rstep"><div class="rstep-num">01</div><div class="rstep-title">Inspection &amp; Evaluation</div><div class="rstep-desc">Full teardown with a detailed condition report for every component.</div></div>
+          <div class="rstep"><div class="rstep-num">02</div><div class="rstep-title">Mechanical Restoration</div><div class="rstep-desc">Worn parts replaced, frame repaired, all moving parts reconditioned.</div></div>
+          <div class="rstep"><div class="rstep-num">03</div><div class="rstep-title">Electrical Overhaul</div><div class="rstep-desc">Complete rewiring, control panel upgrade &amp; PLC software update.</div></div>
+          <div class="rstep"><div class="rstep-num">04</div><div class="rstep-title">Pneumatic Calibration</div><div class="rstep-desc">Pneumatic system serviced, leaks eliminated, pressure calibrated.</div></div>
+          <div class="rstep"><div class="rstep-num">05</div><div class="rstep-title">Performance Testing</div><div class="rstep-desc">FAT testing with your actual product before dispatch — zero compromise.</div></div>
+          <div class="rstep"><div class="rstep-num">06</div><div class="rstep-title">Delivery &amp; Installation</div><div class="rstep-desc">Machine commissioned on-site with full operator training.</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="refurb-big-img">
+          <img src="images/services/refurbishment1.png" alt="VFFS Machine Before and After Refurbishment"/>
+          <div class="img-tag">BEFORE &#8594; AFTER</div>
+        </div>
+      </div>
+    </div>
+    <div class="refurb-gallery">
+      <div class="gallery-main"><img src="images/services/refurbishment3.png" alt="Multiple VFFS Machines Refurbished"/></div>
+      <div class="gallery-side"><div class="gallery-thumb"><img src="images/services/refurbishment2.png" alt="Machine Components Before Refurbishment"/></div></div>
+    </div>
+    <div class="refurb-stats">
+      <div class="rstat"><div class="rstat-num">50+</div><div class="rstat-lbl">Machines Refurbished</div></div>
+      <div class="rstat"><div class="rstat-num">~60%</div><div class="rstat-lbl">Cost vs New Machine</div></div>
+      <div class="rstat"><div class="rstat-num">30</div><div class="rstat-lbl">Day Avg. Turnaround</div></div>
+      <div class="rstat"><div class="rstat-num">100%</div><div class="rstat-lbl">FAT Tested</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 2 — SPARE PARTS -->
+<section class="srv-section bg-alt" id="spareparts">
+  <div class="sec-wrap">
+    <div class="parts-layout">
+      <div>
+        <div class="srv-sec-label">Genuine Parts</div>
+        <h2 class="srv-sec-h2">Spare Parts<br/><em>Supply</em></h2>
+        <p class="srv-sec-p">Keep your machines at peak performance with genuine, high-quality spare parts for all Darepack GTS series VFFS machines and fillers. Fast supply across India — every hour of downtime costs you money.</p>
+        <div class="parts-list">
+          <div class="part-item"><div class="part-ico">&#128297;</div><div><div class="part-name">Sealing Jaws</div><div class="part-desc">Precision-machined horizontal &amp; vertical sealing jaws for all GTS models.</div></div></div>
+          <div class="part-item"><div class="part-ico">&#9881;&#65039;</div><div><div class="part-name">Film Pull &amp; Timing Belts</div><div class="part-desc">OEM-grade rubber &amp; polyurethane belts for accurate film feeding.</div></div></div>
+          <div class="part-item"><div class="part-ico">&#128295;</div><div><div class="part-name">Former / Collar (Tube &amp; Shoulder)</div><div class="part-desc">SS 304 bag formers in all standard and custom sizes.</div></div></div>
+          <div class="part-item"><div class="part-ico">&#128161;</div><div><div class="part-name">Control Panels, Sensors &amp; Drives</div><div class="part-desc">Schneider / Siemens PLCs, proximity sensors, servo drives &amp; HMI panels.</div></div></div>
+          <div class="part-item"><div class="part-ico">&#128737;</div><div><div class="part-name">SS 304 Contact-Part Replacements</div><div class="part-desc">Food-grade stainless steel product-contact parts for auger and cup fillers.</div></div></div>
+          <div class="part-item"><div class="part-ico">&#128260;</div><div><div class="part-name">Bearings, Rollers &amp; Pneumatics</div><div class="part-desc">Film guide rollers, cylinders, pneumatic valves and all major bearings.</div></div></div>
+        </div>
+      </div>
+      <div class="parts-photos">
+        <div class="parts-photo wide"><img src="images/services/spare_parts3.png" alt="VFFS Former / Collar"/></div>
+        <div class="parts-photo"><img src="images/services/spare_parts2.png" alt="Timing Belt"/></div>
+        <div class="parts-photo"><img src="images/services/spare_parts1.png" alt="Sealing Jaw"/></div>
+      </div>
+    </div>
+    <div class="delivery-strip">
+      <div class="dcard"><div class="dcard-ico">&#128193;</div><div class="dcard-title">Extensive Parts Inventory</div><div class="dcard-desc">Fast-moving parts stocked at our Sanaswadi facility — ready to dispatch same day.</div></div>
+      <div class="dcard"><div class="dcard-ico">&#128640;</div><div class="dcard-title">Pan-India Fast Dispatch</div><div class="dcard-desc">Parts shipped via express courier. Critical components reach you in 24–48 hours.</div></div>
+      <div class="dcard"><div class="dcard-ico">&#9989;</div><div class="dcard-title">100% Genuine Parts</div><div class="dcard-desc">Every part manufactured or sourced to the same specification as the original machine.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 3 — ON-SITE -->
+<section class="srv-section" id="onsite">
+  <div class="sec-wrap">
+    <div class="onsite-layout">
+      <div>
+        <div class="srv-sec-label">Field Support</div>
+        <h2 class="srv-sec-h2">On-Site<br/><em>Services</em></h2>
+        <p class="srv-sec-p" style="margin-bottom:28px;">Our trained field engineers come directly to your facility — anywhere in India. From routine preventive maintenance to emergency breakdown response, we keep your production line at full efficiency.</p>
+        <div class="onsite-feat"><div class="onsite-feat-ico">&#128737;</div><div><div class="onsite-feat-title">Preventive Maintenance</div><div class="onsite-feat-desc">Scheduled visits to inspect, lubricate, calibrate and tune your machine before problems occur.</div></div></div>
+        <div class="onsite-feat"><div class="onsite-feat-ico">&#9889;</div><div><div class="onsite-feat-title">Breakdown Response</div><div class="onsite-feat-desc">Fast-response engineers dispatched to diagnose and repair unplanned stoppages.</div></div></div>
+        <div class="onsite-feat"><div class="onsite-feat-ico">&#127891;</div><div><div class="onsite-feat-title">Operator Training &amp; SOPs</div><div class="onsite-feat-desc">Hands-on training for your operators covering setup, changeover, cleaning and troubleshooting.</div></div></div>
+        <div class="onsite-feat"><div class="onsite-feat-ico">&#127959;</div><div><div class="onsite-feat-title">Commissioning &amp; Integration</div><div class="onsite-feat-desc">New machine installation, line integration and full performance validation on-site.</div></div></div>
+      </div>
+      <div class="onsite-photos">
+        <div class="onsite-photo"><img src="images/services/onsite-services1.jpg" alt="Darepack Field Engineer On-Site Service"/></div>
+        <div class="onsite-photo"><img src="images/services/onsite-services2.jpg" alt="On-Site Electrical Panel Servicing"/></div>
+      </div>
+    </div>
+    <div class="amc-section-head">
+      <div class="srv-sec-label" style="justify-content:center;display:flex;">Maintenance Contracts</div>
+      <h2 class="srv-sec-h2" style="text-align:center;">Annual Maintenance<br/><em>Contracts (AMC)</em></h2>
+      <p class="srv-sec-p" style="text-align:center;margin:12px auto 0;">Choose the right level of cover for your operation. All plans include dedicated support from our Pune team.</p>
+    </div>
+    <div class="amc-grid">
+      <div class="amc-card">
+        <div class="amc-head"><div class="amc-plan">Basic Plan</div><div class="amc-name">Essential AMC</div></div>
+        <div class="amc-body">
+          <ul class="amc-feats">
+            <li>2 preventive maintenance visits/year</li>
+            <li>Telephone &amp; WhatsApp support</li>
+            <li>Machine health report after each visit</li>
+            <li>10% discount on spare parts</li>
+            <li>Priority scheduling for breakdown calls</li>
+          </ul>
+          <a href="contact.html" class="amc-cta">Get Quote &#8594;</a>
+        </div>
+      </div>
+      <div class="amc-card featured">
+        <div class="amc-head"><div class="amc-plan">Standard Plan</div><div class="amc-name">Comprehensive AMC</div></div>
+        <div class="amc-body">
+          <ul class="amc-feats">
+            <li>4 preventive maintenance visits/year</li>
+            <li>48-hour on-site breakdown response</li>
+            <li>All labour charges included</li>
+            <li>15% discount on spare parts</li>
+            <li>Operator refresher training included</li>
+            <li>Dedicated service engineer assigned</li>
+          </ul>
+          <a href="contact.html" class="amc-cta">Get Quote &#8594;</a>
+        </div>
+      </div>
+      <div class="amc-card">
+        <div class="amc-head"><div class="amc-plan">Premium Plan</div><div class="amc-name">Full-Cover AMC</div></div>
+        <div class="amc-body">
+          <ul class="amc-feats">
+            <li>6 preventive maintenance visits/year</li>
+            <li>24-hour emergency response</li>
+            <li>Labour + selected parts included</li>
+            <li>20% discount on all spare parts</li>
+            <li>Quarterly performance reports</li>
+            <li>Free operator training (up to 4 staff)</li>
+          </ul>
+          <a href="contact.html" class="amc-cta">Get Quote &#8594;</a>
+        </div>
+      </div>
+    </div>
+    <div class="response-strip">
+      <div class="response-text">
+        <h3>Need Emergency Support Right Now?</h3>
+        <p>Our helpline is available 6 days a week — fast response, expert engineers.</p>
+      </div>
+      <div class="response-btns">
+        <a href="tel:9850079331" class="rbtn red">&#128222; +91 9850079331</a>
+        <a href="https://wa.me/919850079331" target="_blank" class="rbtn outline">&#128172; WhatsApp Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY DAREPACK SERVICE -->
+<section class="why-service">
+  <div class="sec-wrap">
+    <div style="text-align:center">
+      <div class="srv-sec-label" style="justify-content:center;display:flex;">Why Choose Darepack</div>
+      <h2 class="srv-sec-h2" style="color:#fff;text-align:center;">Built Around Your <em>Uptime</em></h2>
+      <p class="srv-sec-p" style="color:#666;text-align:center;margin:14px auto 0;">We built our after-sales program with one goal: zero unexpected downtime on your production floor.</p>
+    </div>
+    <div class="why-grid">
+      <div class="wcard"><div class="wcard-ico">&#127919;</div><div class="wcard-title">OEM Knowledge</div><div class="wcard-desc">We designed and built your machine — no one knows it better. Our engineers diagnose faster and fix right the first time.</div></div>
+      <div class="wcard"><div class="wcard-ico">&#128640;</div><div class="wcard-title">Fast Parts Availability</div><div class="wcard-desc">Genuine parts stocked at our Pune facility. Critical spares dispatched same day across India via express courier.</div></div>
+      <div class="wcard"><div class="wcard-ico">&#127942;</div><div class="wcard-title">15+ Years Experience</div><div class="wcard-desc">Over a decade and a half servicing VFFS machines across 12+ industries and 200+ clients all over India.</div></div>
+      <div class="wcard"><div class="wcard-ico">&#129309;</div><div class="wcard-title">Long-Term Partnership</div><div class="wcard-desc">We're not just a vendor — we're your packaging partner for the lifetime of your machine. Dedicated support, always.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="cta-inner">
+    <h2>Ready to Protect Your Packaging Line?</h2>
+    <p>Talk to our service team today — get a tailored AMC quote, spare parts enquiry or book an on-site visit.</p>
+    <a href="contact.html" class="btn-white">Contact Us Now &#8594;</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="sec-wrap">
+    <div class="foot-grid">
+      <div><div class="foot-logo"><img src="images/logo.png" alt="Darepack"/></div><p class="foot-desc">Designing and manufacturing high-performance packaging machinery from Pune, Maharashtra. Trusted by 200+ businesses across India.</p></div>
+      <div class="foot-col col-products"><h5>We Manufacture</h5><ul><li><a href="products.html">GTS-300S VFFS</a></li><li><a href="products.html">GTS-400S VFFS</a></li><li><a href="products.html">Fillers &amp; Weighers</a></li><li><a href="products.html">Feeding Systems</a></li></ul></div>
+      <div class="foot-col col-company"><h5>Company</h5><ul><li><a href="about.html">About Us</a></li><li><a href="index.html#why">Why Darepack</a></li><li><a href="services.html">Our Services</a></li><li><a href="industries.html">Industries</a></li><li><a href="index.html#clients">Our Clients</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="https://www.darepack.com" target="_blank">www.darepack.com</a></li></ul></div>
+      <div class="foot-col col-contact"><h5>Contact Us</h5><ul><li><a href="tel:9850079331">&#128222; 9850079331</a></li><li><a href="tel:8805029057">&#128222; 8805029057</a></li><li><a href="https://wa.me/919850079331" target="_blank">&#128172; WhatsApp</a></li><li><a href="mailto:info@darepackpackaging.com">&#9993; Email Us</a></li><li><a href="contact.html">&#128205; Sanaswadi, Pune 412208</a></li><li><a href="contact.html">&#128336; Mon-Sat 10:00-18:00</a></li></ul></div>
+    </div>
+    <div class="foot-bottom"><p>&#169; 2026 Darepack. All rights reserved. | <a href="https://www.darepack.com" target="_blank">www.darepack.com</a></p><p>Nareshwar Temple Road, Gat No. 933, Sanaswadi, Pune - 412208, Maharashtra, India</p></div>
+  </div>
+</footer>
+
+<button id="dp-fab" aria-label="Call us" onclick="window.location.href='tel:9850079331'">
+  <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+</button>
+
+<script>
+window.addEventListener('scroll',function(){document.getElementById('main-nav').classList.toggle('shadow',window.scrollY>8);});
+(function(){
+  var toggle=document.getElementById('theme-toggle');
+  var themeLogos=document.querySelectorAll('[data-light-src][data-dark-src]');
+  function applyLogoTheme(isDark){
+    themeLogos.forEach(function(img){
+      img.src=img.getAttribute(isDark?'data-dark-src':'data-light-src');
+    });
+  }
+  var saved=localStorage.getItem('dp-theme');
+  if(saved==='dark'){document.body.classList.add('dark-mode');toggle.textContent='☀️';}
+  applyLogoTheme(saved==='dark');
+  toggle.addEventListener('click',function(){
+    var isDark=document.body.classList.toggle('dark-mode');
+    toggle.textContent=isDark?'☀️':'🌙';
+    applyLogoTheme(isDark);
+    localStorage.setItem('dp-theme',isDark?'dark':'light');
+  });
+})();
+(function(){
+  var tabs=document.querySelectorAll('.srv-tab-link');
+  var ids=['refurbishment','spareparts','onsite'];
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY+160;
+    ids.forEach(function(id,i){
+      var el=document.getElementById(id);
+      if(!el)return;
+      if(el.offsetTop<=y&&el.offsetTop+el.offsetHeight>y){
+        tabs.forEach(function(t){t.classList.remove('active');});
+        if(tabs[i])tabs[i].classList.add('active');
+      }
+    });
+  });
+  tabs.forEach(function(tab){
+    tab.addEventListener('click',function(e){
+      e.preventDefault();
+      var target=document.querySelector(tab.getAttribute('href'));
+      if(target)window.scrollTo({top:target.offsetTop-140,behavior:'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>
